@@ -15,37 +15,9 @@
 }
 
 /*......*/
+.navbar {
+   background-color: transparent;
+   background: transparent;
+}
 
-.navbar.transparent .navbar-inner {
-       background: rgba(0,0,0,0.4);
-       color: #ffffff;
-    }
-    .navbar.transparent .navbar-inner li a {
-        color: #ffffff;
-        font-family: "Raleway";
-        font-size: 10pt;
-        letter-spacing: 3pt;
-    }
-    .navbar.transparent .nav > li > a:focus,
-    .navbar.transparent .nav > li > a:hover {
-      color: #666666;
-      text-decoration: none;
-      background-color: transparent;
-    }
-    .button.navbar-toggle.collapsed:focus,
-    .button.navbar-toggle.collapsed:hover {
-      color: #666666;
-    }
-    .navbar.transparent .navbar-brand:hover, 
-     .navbar.transparent .navbar-brand:focus {
-      background-color: transparent;
-      color: #ffffff;
-    }
-    .navbar.transparent .navbar-brand{
-      background-color: transparent;
-      color: #ffffff;
-      font-family: "Tenor Sans";
-      font-size: 16pt;
-      letter-spacing: 1pt;
-    }
-
+.navbar li { color: #000 } 
