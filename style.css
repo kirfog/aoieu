@@ -1,5 +1,5 @@
 .carousel .item {
-    width: 100%; /*slider width*/
+    width: 80%; /*slider width*/
     /*max-height: 600px; /*slider height*/
 	height: 100vh;
 }
