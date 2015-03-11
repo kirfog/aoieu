@@ -1,4 +1,11 @@
 $(document).ready(function() {
+	
+	$(".nav a").on("click", function(){
+   $(".nav").find(".active").removeClass("active");
+   $(this).parent().addClass("active");
+});
+	
+	
 	// navigation click actions	
 	$('.scroll-link').on('click', function(event){
 		event.preventDefault();
