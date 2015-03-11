@@ -22,6 +22,7 @@ $(document).ready(function() {
 		$('#main-nav').toggleClass("open");
 	});
 });
+
 // scroll function
 function scrollToID(id, speed){
 	var offSet = 0;
