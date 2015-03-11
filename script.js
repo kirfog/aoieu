@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	
-	$(".nav a").on("click", function(){
+	$(".nav a, .navbar-brand").on("click", function(){
 		event.preventDefault();
 	   $(".nav").find(".active").removeClass("active");
 	   $(this).parent().addClass("active");
