@@ -4,8 +4,8 @@ $(document).ready(function() {
 		event.preventDefault();
 	   $(".nav").find(".active").removeClass("active");
 	   $(this).parent().addClass("active");
-	   	var sectionID = $(this).attr("data-id");
-		scrollToID('#' + sectionID, 750);
+	   	var sectionID = $(this).attr("way");
+		scrollToID('#' + sectionID, 1000);
 	});
 	
 	
