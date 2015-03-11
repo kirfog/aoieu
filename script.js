@@ -1,17 +1,16 @@
 $(document).ready(function() {
 	
 	$(".nav a").on("click", function(){
-   $(".nav").find(".active").removeClass("active");
-   $(this).parent().addClass("active");
-});
+		event.preventDefault();
+	   $(".nav").find(".active").removeClass("active");
+	   $(this).parent().addClass("active");
+	   	var sectionID = $(this).attr("data-id");
+		scrollToID('#' + sectionID, 750);
+	});
 	
 	
 	// navigation click actions	
-	$('.scroll-link').on('click', function(event){
-		event.preventDefault();
-		var sectionID = $(this).attr("data-id");
-		scrollToID('#' + sectionID, 750);
-	});
+
 	// scroll to top action
 	$('.scroll-top').on('click', function(event) {
 		event.preventDefault();
