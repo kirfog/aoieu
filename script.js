@@ -3,6 +3,7 @@ var sections = $('section')
   , nav = $('nav')
   , nav_height = 0;
  //nav.outerHeight()
+ 
 $(window).on('scroll', function () {
   var cur_pos = $(this).scrollTop();
  
@@ -19,7 +20,7 @@ $(window).on('scroll', function () {
   });
 });
 
-	$(".nav a, .navbar-brand").on("click", function(){
+	nav.find('a').on("click", function(){
 		event.preventDefault();
 		id = $(this).attr("href");
 		scrollToID(id, 1000);
