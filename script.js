@@ -30,8 +30,8 @@ function onScroll(event){
         var currLink = $(this);
         var refElement = $(currLink.attr("href"));
         if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-            $('#menu-center ul li a').removeClass("active");
-            currLink.addClass("active");
+            $('#menu-center ul li a').parent().removeClass("active");
+            currLink.parent().addClass("active");
         }
         else{
             currLink.removeClass("active");
