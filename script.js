@@ -10,7 +10,7 @@ $(document).ready(function() {
 		$(this).parent().addClass("active");
 		
 		window.location.hash = $(this).attr("way");
-		scrollToID('#' + window.location.hash, 1000);
+		scrollToID(window.location.hash, 1000);
 		console.log(window.location.hash);
 	});
 	
