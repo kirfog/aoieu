@@ -1,50 +1,40 @@
-$(document).ready(function() {
-	
-	//$(".nav").find(".active").removeClass("active");
-	//$("a[way=window.location.hash]").parent().addClass(active");
-	
-	$(".nav a, .navbar-brand").on("click", function(){
-		event.preventDefault();
-		
-		$(".nav").find(".active").removeClass("active");
-		$(this).parent().addClass("active");
-		
-		row = $(this).attr("href");
-		scrollToID(row, 1000);
-		window.location.hash = row;
-		
-		console.log(row);
-		console.log(window.location.hash);
-	});
-	
-	
-	// navigation click actions	
 
-	// scroll to top action
-	$('.scroll-top').on('click', function(event) {
-		event.preventDefault();
-		$('html, body').animate({scrollTop:0}, 'slow'); 		
-	});
-	// mobile nav toggle
-	$('#nav-toggle').on('click', function (event) {
-		event.preventDefault();
-		$('#main-nav').toggleClass("open");
-	});
+$(document).ready(function () {
+    $(document).on("scroll", onScroll);
+    
+    //smoothscroll
+    $('a[href^="#"]').on('click', function (e) {
+        e.preventDefault();
+        $(document).off("scroll");
+        
+        $('a').each(function () {
+            $(this).removeClass('active');
+        })
+        $(this).addClass('active');
+      
+        var target = this.hash,
+            menu = target;
+        $target = $(target);
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top+2
+        }, 500, 'swing', function () {
+            window.location.hash = target;
+            $(document).on("scroll", onScroll);
+        });
+    });
 });
 
-// scroll function
-function scrollToID(id, speed){
-	var offSet = 0;
-	var targetOffset = $(id).offset().top - offSet;
-	var mainNav = $('#main-nav');
-	$('html,body').animate({scrollTop:targetOffset}, speed);
-	if (mainNav.hasClass("open")) {
-		mainNav.css("height", "1px").removeClass("in").addClass("collapse");
-		mainNav.removeClass("open");
-	}
-}
-if (typeof console === "undefined") {
-    console = {
-        log: function() { }
-    };
+function onScroll(event){
+    var scrollPos = $(document).scrollTop();
+    $('#menu-center a').each(function () {
+        var currLink = $(this);
+        var refElement = $(currLink.attr("href"));
+        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+            $('#menu-center ul li a').removeClass("active");
+            currLink.addClass("active");
+        }
+        else{
+            currLink.removeClass("active");
+        }
+    });
 }
