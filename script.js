@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	
+	scrollToID('#song', 300);
+	
 	$(".nav a, .navbar-brand").on("click", function(){
 		event.preventDefault();
 	   $(".nav").find(".active").removeClass("active");
