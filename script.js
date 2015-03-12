@@ -6,6 +6,8 @@ var sections = $('section')
  
 $(window).on('scroll', function () {
   var cur_pos = $(this).scrollTop();
+  
+ console.log(cur_pos);
  
   sections.each(function() {
     var top = $(this).offset().top - nav_height,
@@ -23,7 +25,7 @@ $(window).on('scroll', function () {
 	nav.find('a').on("click", function(){
 		event.preventDefault();
 		id = $(this).attr("href");
-		scrollToID(id, 1000);
+		scrollToID(id, 800);
 	});
 
 });
@@ -32,8 +34,10 @@ $(window).on('scroll', function () {
 function scrollToID(id, speed){
 	var offSet = 0;
 	var targetOffset = $(id).offset().top - offSet;
-	var mainNav = $('#main-nav');
 	$('html,body').animate({scrollTop:targetOffset}, speed);
+	
+	//???
+	var mainNav = $('#main-nav');
 	if (mainNav.hasClass("open")) {
 		mainNav.css("height", "1px").removeClass("in").addClass("collapse");
 		mainNav.removeClass("open");
