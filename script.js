@@ -9,9 +9,11 @@ $(document).ready(function() {
 		$(".nav").find(".active").removeClass("active");
 		$(this).parent().addClass("active");
 		
-		window.location.hash = $(this).attr("href");
-		scrollToID(window.location.hash, 1000);
-		console.log($(this).attr("way"));
+		row = $(this).attr("way");
+		scrollToID(row, 1000);
+		window.location.hash = row;
+		
+		console.log(row);
 		console.log(window.location.hash);
 	});
 	
