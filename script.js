@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+$('body').panelSnap();
+	
 var sections = $('section')
   , nav = $('nav')
   , nav_height = 100;
