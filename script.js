@@ -19,6 +19,7 @@ $(window).on('scroll', function () {
 });
 
 nav.find('a').on('click', function () {
+	preventDefault();
   var $el = $(this)
     , id = $el.attr('href');
  
