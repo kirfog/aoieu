@@ -1,7 +1,7 @@
 $(document).ready(function() {
 var sections = $('section')
   , nav = $('nav')
-  , nav_height = 0;
+  , nav_height = 50;
  //nav.outerHeight()
  
 $(window).on('scroll', function () {
