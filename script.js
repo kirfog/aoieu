@@ -21,8 +21,6 @@ $(window).on('scroll', function () {
 
 	$(".nav a, .navbar-brand").on("click", function(){
 		event.preventDefault();
-		$(".nav").find(".active").removeClass("active");
-		$(this).parent().addClass("active");
 		id = $(this).attr("href");
 		scrollToID(id, 1000);
 	});
