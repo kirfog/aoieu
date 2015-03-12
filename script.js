@@ -1,13 +1,17 @@
 $(document).ready(function() {
 	
-	
+	$(".nav").find(".active").removeClass("active");
+	$("a[way=window.location.hash]").parent().addClass(active");
 	
 	$(".nav a, .navbar-brand").on("click", function(){
 		event.preventDefault();
-	   $(".nav").find(".active").removeClass("active");
-	   $(this).parent().addClass("active");
-		scrollToID('#' + $(this).attr("way"), 1000);
-		window.location.hash = sectionID;
+		
+		$(".nav").find(".active").removeClass("active");
+		$(this).parent().addClass("active");
+		
+		window.location.hash = $(this).attr("way");
+		scrollToID('#' + window.location.hash, 1000);
+		console.log(window.location.hash);
 	});
 	
 	
