@@ -7,7 +7,7 @@ $(document).ready(function() {
 	   $(".nav").find(".active").removeClass("active");
 	   $(this).parent().addClass("active");
 	   var sectionID = $(this).attr("way");
-		scrollToID('#' + sectionID, 1000);
+		//scrollToID('#' + sectionID, 1000);
 		window.location.hash = sectionID;
 	});
 	
