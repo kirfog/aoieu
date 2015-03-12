@@ -1,3 +1,4 @@
+$(document).ready(function() {
 var sections = $('section')
   , nav = $('nav')
   , nav_height = 0;
@@ -28,4 +29,6 @@ nav.find('a').on('click', function () {
   }, 500);
  
   return false;
+});
+
 });
