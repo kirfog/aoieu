@@ -8,9 +8,9 @@ $(document).ready(function () {
         $(document).off("scroll");
         
         $('a').each(function () {
-            $(this).removeClass('active');
+            $(this).parent().removeClass('active');
         })
-        $(this).addClass('active');
+        $(this).parent().addClass('active');
       
         var target = this.hash,
             menu = target;
