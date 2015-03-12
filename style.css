@@ -10,7 +10,9 @@
 
 .jumbotron{
 height: 100vh;
+text-align:center;
 }
+
 
 /*full width container*/
 @media (max-width: 767px) {
