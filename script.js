@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
 	//$(".nav").find(".active").removeClass("active");
-	//$("a[way=window.location.hash]").parent().addClass(active");
+	$("a[way=window.location.hash]").parent().addClass(active");
 	
 	$(".nav a, .navbar-brand").on("click", function(){
 		event.preventDefault();
