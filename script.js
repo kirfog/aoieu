@@ -11,10 +11,9 @@ $(window).on('scroll', function () {
  
     if (cur_pos >= top && cur_pos <= bottom) {
       nav.find('a').parent().removeClass('active');
-      sections..parent().removeClass('active');
- 
+      sections.removeClass('active');
       $(this).addClass('active');
-      nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
+      nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
     }
   });
 });
