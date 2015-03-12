@@ -10,8 +10,8 @@ $(window).on('scroll', function () {
         bottom = top + $(this).outerHeight();
  
     if (cur_pos >= top && cur_pos <= bottom) {
-      nav.find('a').removeClass('active');
-      sections.removeClass('active');
+      nav.find('a').parent().removeClass('active');
+      sections..parent().removeClass('active');
  
       $(this).addClass('active');
       nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
