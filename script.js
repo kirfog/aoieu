@@ -19,7 +19,7 @@ $(window).on('scroll', function () {
       $(this).addClass('active');
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
-	  scrollToID($(this).attr('id'), 800);
+	  scrollToID($(this).attr('id'), 500);
 	  
     }
   });
@@ -35,14 +35,6 @@ $(window).on('scroll', function () {
 
 
 function scrollToID(id, speed){
-	var offSet = 0;
-	var targetOffset = $(id).offset().top - offSet;
+	var targetOffset = $(id).offset().top;
 	$('html,body').animate({scrollTop:targetOffset}, speed);
-	
-	//???
-	var mainNav = $('#main-nav');
-	if (mainNav.hasClass("open")) {
-		mainNav.css("height", "1px").removeClass("in").addClass("collapse");
-		mainNav.removeClass("open");
-	}
 }
