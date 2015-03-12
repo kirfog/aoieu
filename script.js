@@ -6,8 +6,9 @@ $(document).ready(function() {
 		event.preventDefault();
 	   $(".nav").find(".active").removeClass("active");
 	   $(this).parent().addClass("active");
-	   	var sectionID = $(this).attr("way");
+	   var sectionID = $(this).attr("way");
 		scrollToID('#' + sectionID, 1000);
+		window.location.hash = sectionID;
 	});
 	
 	
