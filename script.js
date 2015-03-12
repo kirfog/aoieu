@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	
-	scrollToID('#' + window.location.hash, 1000);
+	
 	
 	$(".nav a, .navbar-brand").on("click", function(){
 		event.preventDefault();
