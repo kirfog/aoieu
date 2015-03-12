@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
 	//$(".nav").find(".active").removeClass("active");
-	$("a[way=window.location.hash]").parent().addClass(active");
+	//$("a[way=window.location.hash]").parent().addClass(active");
 	
 	$(".nav a, .navbar-brand").on("click", function(){
 		event.preventDefault();
@@ -11,6 +11,7 @@ $(document).ready(function() {
 		
 		window.location.hash = $(this).attr("way");
 		scrollToID(window.location.hash, 1000);
+		console.log($(this).attr("way"));
 		console.log(window.location.hash);
 	});
 	
