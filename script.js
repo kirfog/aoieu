@@ -9,7 +9,7 @@ $(document).ready(function() {
 		$(".nav").find(".active").removeClass("active");
 		$(this).parent().addClass("active");
 		
-		window.location.hash = $(this).attr("way");
+		window.location.hash = $(this).attr("href");
 		scrollToID(window.location.hash, 1000);
 		console.log($(this).attr("way"));
 		console.log(window.location.hash);
