@@ -20,7 +20,7 @@ $(window).on('scroll', function () {
 });
 
 nav.find('a').on('click', function () {
-	preventDefault();
+	event.preventDefault();
   var $el = $(this)
     , id = $el.attr('href');
  
