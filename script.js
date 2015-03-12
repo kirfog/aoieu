@@ -11,10 +11,6 @@ $(window).on('scroll', function () {
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
     if (cur_pos >= top && cur_pos <= bottom) {
-		
-		id = $(this).attr('id');
-		scrollToID(id, 200);
-		
       nav.find('a').parent().removeClass('active');
       sections.removeClass('active');
       $(this).addClass('active');
