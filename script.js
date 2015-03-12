@@ -1,13 +1,12 @@
 $(document).ready(function() {
 	
-	scrollToID('#song', 300);
+	scrollToID('#' + window.location.hash, 1000);
 	
 	$(".nav a, .navbar-brand").on("click", function(){
 		event.preventDefault();
 	   $(".nav").find(".active").removeClass("active");
 	   $(this).parent().addClass("active");
-	   var sectionID = $(this).attr("way");
-		//scrollToID('#' + sectionID, 1000);
+		scrollToID('#' + $(this).attr("way"), 1000);
 		window.location.hash = sectionID;
 	});
 	
