@@ -24,11 +24,14 @@ $(window).on('scroll', function () {
 });
 
 	nav.find('a').on("click", function(){
-		$(".navbar-collapse").collapse('hide');
 		event.preventDefault();
 		id = $(this).attr("href");
 		scrollToID(id, 800);
 	});
+	
+	 $(".navbar-nav li a").click(function(event) {
+    $(".navbar-collapse").collapse('hide');
+  });
 
 });
 
