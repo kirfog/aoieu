@@ -16,6 +16,9 @@ text-align:center;
 .pd10{
 	padding: 10%;
 }
+.pd5{
+	padding: 5%;
+}
 
 /*full width container*/
 @media (max-width: 767px) {
