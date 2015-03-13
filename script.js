@@ -29,7 +29,7 @@ $(window).on('scroll', function () {
 		scrollToID(id, 800);
 	});
 	
-	 $(".navbar-nav li a").click(function(event) {
+	 nav.find('a').click(function(event) {
     $(".navbar-collapse").collapse('hide');
   });
 
