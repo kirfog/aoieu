@@ -8,15 +8,15 @@
     width: 100%; /*img width*/
 }
 
-section{
-	height: 100vh;
-}
-
 .pd10{
 	padding: 10%;
 }
 .pd5{
 	padding: 5%;
+}
+
+.height50{
+height: 50hv;
 }
 
 /*full width container*/
