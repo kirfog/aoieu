@@ -24,6 +24,7 @@ $(window).on('scroll', function () {
 });
 
 	nav.find('a').on("click", function(){
+		$(".navbar-collapse").collapse('hide');
 		event.preventDefault();
 		id = $(this).attr("href");
 		scrollToID(id, 800);
