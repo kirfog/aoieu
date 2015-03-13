@@ -8,9 +8,8 @@
     width: 100%; /*img width*/
 }
 
-.jumbotron{
-/*height: 100vh;*/
-text-align:center;
+section{
+	height: 100vh;
 }
 
 .pd10{
