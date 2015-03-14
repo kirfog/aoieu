@@ -34,7 +34,8 @@ $(window).on('scroll', function () {
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
 		nav.find('a').css("color",iscolor);
-		$("li[class='active']").css("background-color",iscolor);
+		iiscolor = getContrast50(iscolor);
+		nav.find('a[href="#'+$(this).attr('id')+'"]').parent()css("background-color",iiscolor);
     }
   });
 });
