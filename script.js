@@ -21,12 +21,14 @@ $(window).on('scroll', function () {
 	  
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
+		scolor = rgb2hex($(this).css("background-color"));
+		iscolor = getContrast50(scolor);
+		
     if (cur_pos >= top && cur_pos <= bottom) {
       
-	  scolor = rgb2hex($(this).css("background-color"));
-	  iscolor = getContrast50(scolor);
+	  
+	  
 	  nav.find('a').css("color",iscolor);
-	  $("li[class='active']").css("background-color","white");
 	  
       sections.removeClass('active');
       $(this).addClass('active');
