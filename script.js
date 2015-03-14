@@ -30,7 +30,7 @@ $(window).on('scroll', function () {
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
 	  scolor = rgb2hex($(this).css("background-color"));
-	  iscolor = 0xffffff ^ scolor;
+	  iscolor = invertColor(scolor);
 	  console.log(scolor);
 	  console.log(iscolor);
 	  
@@ -57,7 +57,8 @@ function rgb2hex(rgb) {
     function hex(x) {
         return ("0" + parseInt(x).toString(16)).slice(-2);
     }
-    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+    //return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+	return hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
 
 function invertColor(hexTripletColor) {
