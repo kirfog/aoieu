@@ -29,7 +29,11 @@ $(window).on('scroll', function () {
 	  nav.find('a').parent().removeClass('active');
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
-	  console.log($(this).css("background-color"));
+	  scolor = rgb2hex($(this).css("background-color"));
+	  console.log(scolor);
+	  
+	  
+	  
     }
   });
 });
@@ -46,4 +50,23 @@ $(window).on('scroll', function () {
 function scrollToID(id, speed){
 	var targetOffset = $(id).offset().top;
 	$('html,body').animate({scrollTop:targetOffset}, speed);
+}
+
+function rgb2hex(rgb) {
+    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+        return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+
+function invertColor(hexTripletColor) {
+    var color = hexTripletColor;
+    color = color.substring(1);           // remove #
+    color = parseInt(color, 16);          // convert to integer
+    color = 0xFFFFFF ^ color;             // invert three bytes
+    color = color.toString(16);           // convert to hex
+    color = ("000000" + color).slice(-6); // pad with leading zeros
+    color = "#" + color;                  // prepend #
+    return color;
 }
