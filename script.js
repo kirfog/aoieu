@@ -1,6 +1,10 @@
 $(document).ready(function() {
 	
 $('body').panelSnap();
+
+$(".carousel-caption").animate({ 
+        marginLeft: "+=250px",
+    }, 1000 );
 	
 var sections = $('section')
   , nav = $('nav')
