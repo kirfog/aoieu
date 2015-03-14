@@ -3,7 +3,7 @@ $(document).ready(function() {
 $('body').panelSnap();
 
 $(".carousel-caption").animate({ 
-        marginLeft: "+=250px",
+        marginLeft: "+=9999px",
     }, 1000 );
 	
 var sections = $('section')

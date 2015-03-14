@@ -11,6 +11,10 @@ overflow-x: hidden;
     width: 100%; /*img width*/
 }
 
+.carousel-caption{
+	margin-left:-9999;
+}
+
 .pd10{
 	padding: 10%;
 }
