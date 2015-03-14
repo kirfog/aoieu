@@ -35,7 +35,7 @@ $(window).on('scroll', function () {
 	  
 		nav.find('a').css("color",iscolor);
 		iiscolor = getContrast50(iscolor);
-		nav.find('a[href="#'+$(this).attr('id')+'"]').parent()css("background-color",iiscolor);
+		nav.find('a[href="#'+$(this).attr('id')+'"]').parent().css("color",iiscolor);
     }
   });
 });
