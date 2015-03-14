@@ -31,7 +31,7 @@ $(window).on('scroll', function () {
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
 	  scolor = rgb2hex($(this).css("background-color"));
-	  iscolor = "#" + invertColor(scolor);
+	  iscolor = getContrast50(scolor);
 	  console.log(scolor);
 	  console.log(iscolor);
 	  nav.find('a').css("color":iscolor);
@@ -58,8 +58,8 @@ function rgb2hex(rgb) {
     function hex(x) {
         return ("0" + parseInt(x).toString(16)).slice(-2);
     }
-    //return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-	return hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+	//return hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
 
 function invertColor(hexTripletColor) {
@@ -71,4 +71,8 @@ function invertColor(hexTripletColor) {
     color = ("000000" + color).slice(-6); // pad with leading zeros
     color = "#" + color;                  // prepend #
     return color;
+}
+
+function getContrast50(hexcolor){
+    return (parseInt(hexcolor, 16) > 0xffffff/2) ? 'black':'white';
 }
