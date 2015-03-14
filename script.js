@@ -32,10 +32,10 @@ $(window).on('scroll', function () {
 	  
 	  scolor = rgb2hex($(this).css("background-color"));
 	  iscolor = getContrast50(scolor);
-	  console.log($(this).css("background-color"));
-	  console.log(scolor);
-	  console.log(iscolor);
-	  nav.find('a').css("color",iscolor);
+	  if (iscolor == 'black') {
+	  nav.find('a[class="active"]').addClass("white_back");
+	  }
+	  
     }
   });
 });

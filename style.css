@@ -16,6 +16,10 @@ overflow-x: hidden;
 	background-color: white;
 	}
 	
+	.white_back{
+	background-color: white!important;
+	}
+	
 
 .carousel .item {
     width: 100%; /*slider width*/
@@ -29,6 +33,8 @@ overflow-x: hidden;
 .carousel-caption{
 	margin-left: -9999px;
 }
+
+
 
 .pd10{
 	padding: 10%;
