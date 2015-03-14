@@ -33,6 +33,8 @@ $(window).on('scroll', function () {
 	  scolor = rgb2hex($(this).css("background-color"));
 	  iscolor = getContrast50(scolor);
 	  nav.find('a').css("color",iscolor);
+	  
+	  //??????????
 	  //nav.find('a').parent().removeClass('active');
 	  nav.find("li[class='active']").css("background-color","white");
     }
