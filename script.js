@@ -34,7 +34,7 @@ $(window).on('scroll', function () {
 	  iscolor = getContrast50(scolor);
 	  console.log(scolor);
 	  console.log(iscolor);
-	  nav.find('a').css("color":iscolor);
+	  nav.find('a').css("color",iscolor);
     }
   });
 });
