@@ -48,7 +48,6 @@ $(window).on('scroll', function () {
 
 });
 
-
 function scrollToID(id, speed){
 	var targetOffset = $(id).offset().top;
 	$('html,body').animate({scrollTop:targetOffset}, speed);
