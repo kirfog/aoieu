@@ -1,11 +1,14 @@
 $(document).ready(function() {
 	
+	//snapping
 $('body').panelSnap();
+
 
 $(".carousel-caption").animate({ 
         marginLeft: "+=9999px",
     }, 1000 );
 	
+	//scroling menu
 var sections = $('section')
   , nav = $('nav')
   , nav_height = 100;
@@ -26,7 +29,7 @@ $(window).on('scroll', function () {
 	
   });
 });
-
+			//menu_click_scroling
 	nav.find('a').on("click", function(){
 		event.preventDefault();
 		id = $(this).attr("href");
