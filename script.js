@@ -34,7 +34,7 @@ $(window).on('scroll', function () {
 	  iscolor = getContrast50(scolor);
 	  nav.find('a').css("color",iscolor);
 	  //nav.find('a').parent().removeClass('active');
-	  nav.find("a[class='active']").parent().addClass('white_back');
+	  nav.find("li[class='active']").css("color","white");
     }
   });
 });
