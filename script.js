@@ -23,6 +23,7 @@ $(window).on('scroll', function () {
         bottom = top + $(this).outerHeight();
     if (cur_pos >= top && cur_pos <= bottom) {
       
+	  
       sections.removeClass('active');
       $(this).addClass('active');
 	  
@@ -30,10 +31,10 @@ $(window).on('scroll', function () {
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
 	  scolor = rgb2hex($(this).css("background-color"));
-	  iscolor = invertColor(scolor);
+	  iscolor = "#" + invertColor(scolor);
 	  console.log(scolor);
 	  console.log(iscolor);
-	  
+	  nav.find('a').css("color":iscolor);
     }
   });
 });
