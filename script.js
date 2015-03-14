@@ -36,7 +36,7 @@ $(window).on('scroll', function () {
 	  
 	  //??????????
 	  //nav.find('a').parent().removeClass('active');
-	  nav.("li[class='active']").css("background-color","white");
+	  $("li[class='active']").css("background-color","white");
     }
   });
 });
