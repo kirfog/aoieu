@@ -2,6 +2,10 @@
 body{
 overflow-x: hidden;
 }
+	.glyphicon-asterisk{
+	 font-size: 1.7em;
+	}
+
 .carousel .item {
     width: 100%; /*slider width*/
     /*max-height: 600px; /*slider height*/

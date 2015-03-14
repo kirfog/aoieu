@@ -8,6 +8,7 @@ $(".carousel-caption").animate({
         marginLeft: "+=9999px",
     }, 1000 );
 	
+	
 	//scroling menu
 var sections = $('section')
   , nav = $('nav')
