@@ -26,13 +26,16 @@ $(window).on('scroll', function () {
 		iiscolor = getContrast50(iscolor);
 		
     if (cur_pos >= top && cur_pos <= bottom) {
-      
+
+		sections.removeClass('active');
+		$(this).addClass('active');
+		
+		 $(this).css({
+            'top': 200-($(this).scrollTop() / 3) + "px"
+        });
 	  
-      sections.removeClass('active');
-      $(this).addClass('active');
-	  
-	  nav.find('a').parent().removeClass('active');
-      nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
+		nav.find('a').parent().removeClass('active');
+		nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
 		nav.find('a').css("color",iscolor);
 		nav.find('a[href="#'+$(this).attr('id')+'"]').css("color",iiscolor);
