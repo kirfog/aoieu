@@ -22,12 +22,15 @@ $(window).on('scroll', function () {
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
     if (cur_pos >= top && cur_pos <= bottom) {
-      nav.find('a').parent().removeClass('active');
+      
       sections.removeClass('active');
       $(this).addClass('active');
+	  
+	  nav.find('a').parent().removeClass('active');
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
+	  
+	  console.log($(this).attr(background-color));
     }
-	
   });
 });
 			//menu_click_scroling
