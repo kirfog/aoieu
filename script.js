@@ -23,6 +23,7 @@ $(window).on('scroll', function () {
         bottom = top + $(this).outerHeight();
 		scolor = rgb2hex($(this).css("background-color"));
 		iscolor = getContrast50(scolor);
+		iiscolor = getContrast50(iscolor);
 		
     if (cur_pos >= top && cur_pos <= bottom) {
       
@@ -34,7 +35,6 @@ $(window).on('scroll', function () {
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
 		nav.find('a').css("color",iscolor);
-		iiscolor = getContrast50(iscolor);
 		nav.find('a[href="#'+$(this).attr('id')+'"]').css("color",iiscolor);
     }
   });
