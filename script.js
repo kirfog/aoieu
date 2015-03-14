@@ -27,16 +27,14 @@ $(window).on('scroll', function () {
     if (cur_pos >= top && cur_pos <= bottom) {
       
 	  
-	  
-	  nav.find('a').css("color",iscolor);
-	  
       sections.removeClass('active');
       $(this).addClass('active');
 	  
 	  nav.find('a').parent().removeClass('active');
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
-
+		nav.find('a').css("color",iscolor);
+		$("li[class='active']").css("background-color",iscolor);
     }
   });
 });
