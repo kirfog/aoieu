@@ -23,6 +23,10 @@ $(window).on('scroll', function () {
         bottom = top + $(this).outerHeight();
     if (cur_pos >= top && cur_pos <= bottom) {
       
+	  scolor = rgb2hex($(this).css("background-color"));
+	  iscolor = getContrast50(scolor);
+	  nav.find('a').css("color",iscolor);
+	  $("li[class='active']").css("background-color","white");
 	  
       sections.removeClass('active');
       $(this).addClass('active');
@@ -30,13 +34,7 @@ $(window).on('scroll', function () {
 	  nav.find('a').parent().removeClass('active');
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
-	  scolor = rgb2hex($(this).css("background-color"));
-	  iscolor = getContrast50(scolor);
-	  nav.find('a').css("color",iscolor);
-	  
-	  //??????????
-	  //nav.find('a').parent().removeClass('active');
-	  $("li[class='active']").css("background-color","white");
+
     }
   });
 });
