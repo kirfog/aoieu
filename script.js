@@ -30,9 +30,9 @@ $(window).on('scroll', function () {
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
 	  scolor = rgb2hex($(this).css("background-color"));
+	  iscolor = invertColor(scolor);
 	  console.log(scolor);
-	  
-	  
+	  console.log(iscolor);
 	  
     }
   });
