@@ -6,9 +6,16 @@ overflow-x: hidden;
 	 font-size: 1.7em;en
 	 color: green;
 	}
+	
+	
+	
 	.sgreen{
 	background-color: green;
 	}
+	.swhite{
+	background-color: white;
+	}
+	
 
 .carousel .item {
     width: 100%; /*slider width*/
