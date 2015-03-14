@@ -29,10 +29,6 @@ $(window).on('scroll', function () {
 
 		sections.removeClass('active');
 		$(this).addClass('active');
-		
-		 $(this).css({
-            'top': 200-($(this).scrollTop() / 3) + "px"
-        });
 	  
 		nav.find('a').parent().removeClass('active');
 		nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
@@ -45,6 +41,9 @@ $(window).on('scroll', function () {
 			//menu_click_scroling
 	nav.find('a').on("click", function(){
 		event.preventDefault();
+		
+		$(".navbar-collapse").collapse('hide');
+		
 		id = $(this).attr("href");
 		scrollToID(id, 800);
 	});
