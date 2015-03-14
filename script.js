@@ -29,7 +29,7 @@ $(window).on('scroll', function () {
 	  nav.find('a').parent().removeClass('active');
       nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
-	  console.log($(this).attr('background-color'));
+	  console.log($(this).css('background-color'));
     }
   });
 });
