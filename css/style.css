@@ -28,17 +28,22 @@ overflow-x: hidden;
 	}
 
 
+/*carousel*/
 
-.carousel .item, .carousel .item img {
-    width: 100%; /*slider width*/
-    /*max-height: 600px; /*slider height*/
+.carousel .item,  {
+    width: 100%;
 	height: 100vh;
 }
 
+.carousel .item img{
+	width: 100%;
+}
 
 .carousel-caption{
 	margin-left: -9999px;
 }
+
+
 
 
 .pd10{
