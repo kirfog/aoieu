@@ -1,4 +1,4 @@
-/*full width slider*/
+
 body{
 overflow-x: hidden;
 }
@@ -19,8 +19,8 @@ overflow-x: hidden;
 		background-image: url("http://lorempixel.com/1024/750/city");
 	}
 
-	
-	
+
+
 .carousel .item {
     width: 100%; /*slider width*/
     /*max-height: 600px; /*slider height*/
@@ -68,5 +68,5 @@ margin: auto;
 .navbar-inverse .navbar-nav>li>a{
    color: white;
    font-size: 1.2em;
-    }
+ }
 	
