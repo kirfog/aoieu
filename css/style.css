@@ -32,7 +32,7 @@ overflow-x: hidden;
 .carousel .item {
     width: 100%; /*slider width*/
     /*max-height: 600px; /*slider height*/
-	height: 100vh;
+	height: 100%;
 }
 .carousel .item img {
     width: 100%; /*img width*/
@@ -53,6 +53,7 @@ overflow-x: hidden;
 .height100{
 height: 100vh;
 }
+
 
 .hcenter{
 margin: auto;
