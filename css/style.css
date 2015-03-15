@@ -30,7 +30,7 @@ overflow-x: hidden;
 
 /*carousel*/
 
-.carousel .item,  {
+.carousel .item  {
     width: 100%;
 	height: 100vh;
 }
