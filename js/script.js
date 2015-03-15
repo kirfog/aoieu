@@ -42,7 +42,7 @@ $(window).on('scroll', function () {
 	nav.find('a').on("click", function(){
 		event.preventDefault();
 		
-		//$(".navbar-collapse").collapse('hide');//hides mobile menu
+		$(".navbar-collapse").collapse('hide');//hides mobile menu
 		
 		id = $(this).attr("href");
 		scrollToID(id, 800);
