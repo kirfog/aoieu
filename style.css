@@ -61,7 +61,7 @@ margin: auto;
 }
 
 /*.navbar li { color: #000 } */
-.navbar  li  a {
+.nav > li > a {
    color: white;
    font-size: color: 1.2em;
     }
