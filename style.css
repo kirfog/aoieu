@@ -34,8 +34,6 @@ overflow-x: hidden;
 	margin-left: -9999px;
 }
 
-
-
 .pd10{
 	padding: 10%;
 }
@@ -50,6 +48,7 @@ height: 100vh;
 .hcenter{
 margin: auto;
 }
+
 
 /*full width container*/
 @media (max-width: 767px) {
