@@ -61,7 +61,7 @@ margin: auto;
 }
 
 /*.navbar li { color: #000 } */
-.nav > li > a {
+.navbar-inverse .navbar-nav>li>a{
    color: white;
    font-size: color: 1.2em;
     }
