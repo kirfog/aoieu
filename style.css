@@ -3,11 +3,9 @@ body{
 overflow-x: hidden;
 }
 	.glyphicon-asterisk{
-	 font-size: 1.7em;en
+	 font-size: 1.5em;
 	 color: green;
 	}
-	
-	
 	
 	.sgreen{
 	background-color: green;
@@ -15,7 +13,14 @@ overflow-x: hidden;
 	.swhite{
 	background-color: white;
 	}
+	
+	.back_image{
+		background-size:100% auto;
+		background-image: url("http://lorempixel.com/1024/750/city");
+	}
 
+	
+	
 .carousel .item {
     width: 100%; /*slider width*/
     /*max-height: 600px; /*slider height*/
@@ -65,3 +70,4 @@ margin: auto;
    color: white;
    font-size: 1.2em;
     }
+	
