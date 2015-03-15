@@ -2,15 +2,23 @@
 body{
 overflow-x: hidden;
 }
-	.glyphicon-asterisk{
-	 font-size: 1.5em;
-	 color: green;
-	}
+/*tranparent navbar*/
+.navbar {
+   background-color: transparent;
+   background: transparent;
+}
+
+/*.navbar li { color: #000 } */
+.navbar-inverse .navbar-nav>li>a{
+   color: white;
+   font-size: 1.2em;
+ }
+
 	
-	.sgreen{
+	.green{
 	background-color: green;
 	}
-	.swhite{
+	.white{
 	background-color: white;
 	}
 	
@@ -34,6 +42,7 @@ overflow-x: hidden;
 	margin-left: -9999px;
 }
 
+
 .pd10{
 	padding: 10%;
 }
@@ -43,6 +52,9 @@ overflow-x: hidden;
 
 .height100{
 height: 100vh;
+}
+.heigh20{
+	height: 20vh;
 }
 
 .hcenter{
@@ -58,15 +70,5 @@ margin: auto;
     }
 }
 
-/*tranparent navbar*/
-.navbar {
-   background-color: transparent;
-   background: transparent;
-}
 
-/*.navbar li { color: #000 } */
-.navbar-inverse .navbar-nav>li>a{
-   color: white;
-   font-size: 1.2em;
- }
 	
