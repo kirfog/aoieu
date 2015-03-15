@@ -60,7 +60,8 @@ margin: auto;
    background: transparent;
 }
 
-.navbar li { color: #000 } 
-.navbar li a{ 
-color: white;
-font-size: color: 1.2em;} 
+/*.navbar li { color: #000 } */
+ .navbar-default .navbar-nav > li > a {
+   color: white;
+   font-size: color: 1.2em;
+    }
