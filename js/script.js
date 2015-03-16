@@ -1,5 +1,13 @@
 $(document).ready(function() {
-	
+
+	$(window).scroll(function () { 
+
+   $('#song').css({
+      'top' : -($(this).scrollTop()/3)+"px",
+      "background-color" : "red"
+   }); 
+
+});
 		//snapping
 	//$('body').panelSnap();
 
@@ -26,8 +34,6 @@ $(window).on('scroll', function () {
 		iiscolor = getContrast50(iscolor);
 		
     if (cur_pos >= top && cur_pos <= bottom) {
-
-    	$('this').css({'top' : -($(this).scrollTop()/3)+"px"}); 
 
 		sections.removeClass('active');
 		$(this).addClass('active');
