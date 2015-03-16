@@ -10,6 +10,7 @@ $(document).ready(function() {
 });
 		//snapping
 	//$('body').panelSnap();
+	$('body').stellar();
 
 
 	$(".carousel-caption").animate({ 
