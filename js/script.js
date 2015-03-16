@@ -18,8 +18,7 @@ $(document).ready(function() {
 $(window).on('scroll', function () {
   var cur_pos = $(this).scrollTop();
   sections.each(function() {
-	  $('this').css({'top' : -($(this).scrollTop()/3)+"px"
-   }); 
+	  
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
 		scolor = rgb2hex($(this).css("background-color"));
@@ -27,6 +26,8 @@ $(window).on('scroll', function () {
 		iiscolor = getContrast50(iscolor);
 		
     if (cur_pos >= top && cur_pos <= bottom) {
+
+    	$('this').css({'top' : -($(this).scrollTop()/3)+"px"}); 
 
 		sections.removeClass('active');
 		$(this).addClass('active');
