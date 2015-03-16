@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	$(window).scroll(function () { 
 
-   $('#song').css({
+   $('#slow').css({
       'top' : -($(this).scrollTop()/3)+"px",
       "background-color" : "red"
    }); 
