@@ -64,19 +64,11 @@ margin: auto;
 
 #slow{
 	position: absolute;
-	margin: 20px;
 	width: 200px;
 	height: 100px;
+	bottom: 5px;
+	left: 5px;
 }
-
-/*full width container*/
-@media (max-width: 767px) {
-    .block {
-        margin-left: -20px;
-        margin-right: -20px;
-    }
-}
-
 
 
 
