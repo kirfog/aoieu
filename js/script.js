@@ -4,21 +4,22 @@ $(document).ready(function() {
 	$('body').panelSnap();
 
 
-$(".carousel-caption").animate({ 
+	$(".carousel-caption").animate({ 
         marginLeft: "+=9999px",
     }, 1000 );
 	
 	
 	//scroling menu
-var sections = $('section')
-  , nav = $('nav')
-  , nav_height = 100;
- //nav.outerHeight()
+	var sections = $('section')
+  	, nav = $('nav')
+  	, nav_height = 100;
+ 	//nav.outerHeight()
  
 $(window).on('scroll', function () {
   var cur_pos = $(this).scrollTop();
   sections.each(function() {
-	  
+	  $('this').css({'top' : -($(this).scrollTop()/3)+"px"
+   }); 
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
 		scolor = rgb2hex($(this).css("background-color"));
@@ -41,8 +42,8 @@ $(window).on('scroll', function () {
 			//menu_click_scroling
 	nav.find('a').on("click", function(){
 		event.preventDefault();
-		
-		$(".navbar-collapse").collapse('hide');//hides mobile menu
+	
+			$(".navbar-collapse").collapse('hide');//hides mobile menu
 		
 		id = $(this).attr("href");
 		scrollToID(id, 800);
