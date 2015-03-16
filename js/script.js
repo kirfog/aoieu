@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
 		//snapping
-	$('body').panelSnap();
+	//$('body').panelSnap();
 
 
 	$(".carousel-caption").animate({ 
