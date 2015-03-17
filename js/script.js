@@ -9,8 +9,7 @@ $(document).ready(function() {
 
 });
 		//snapping
-	//$('body').panelSnap();
-	$('body').stellar();
+	$('body').panelSnap();
 
 
 	$(".carousel-caption").animate({ 
