@@ -75,3 +75,15 @@ function rgb2hex(rgb){
 function getContrast50(hexcolor){
     return (parseInt(hexcolor, 16) > 0xffffff/2) ? 'black':'white';
 }
+
+
+
+
+$(funcion(){
+	for (i=1; i<144; i++){
+		$('#game').append('<div id="c'+ i +'" class="col-xs-1">'+ i +'<div>');
+		$('#c'+i).css("background-color" : "green",
+			"color": "red"
+			);
+	}
+});
