@@ -81,7 +81,7 @@ function getContrast50(hexcolor){
 $(document).ready(function() {
 
 	for (i=0; i<144; i++){
-		$('#game').append('<div class="col-xs-1 card" id="c'+ i +'" class="card">'+ i +'</div>');
+		$('#game').append('<div class="col-xs-1 card" id="c'+ i +'" class="card"><div class="front">F</div><div class="back">'+ i +'</div></div>');
 	}
 
 	$('.card').on('click', function(){
