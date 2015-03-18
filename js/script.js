@@ -83,10 +83,11 @@ $(document).ready(function() {
 	for (i=0; i<144; i++){
 		$('#game').append('<div class="col-xs-1 card" id="c'+ i +'" class="card">'+ i +'</div>');
 	}
-	$('(#game div').on('click', rollover);
+	$('(#game div').on('click', rollover($(this)));
 	
 	});
 	
-	function rollover(){
-		$(this).css("background-color", "white");
+	function rollover(element){
+		$(element).css("background-color", "white");
+
 	}
