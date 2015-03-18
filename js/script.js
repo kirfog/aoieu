@@ -81,6 +81,6 @@ function getContrast50(hexcolor){
 $(document).ready(function() {
 
 	for (i=0; i<144; i++){
-		$('#game > div').wrapInner('<div class="col-xs-1 card"><div id="c'+ i +'" class="card">'+ i +'</div></div>');
+		$('#game').wrapInner('<div class="col-xs-1 card"><div id="c'+ i +'" class="card">'+ i +'</div></div>');
 	}
 });
