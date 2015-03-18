@@ -73,4 +73,12 @@ margin: auto;
 
 
 
+.card{
+	border: 1px solid green;
+	background-color: blue;
+	padding: 5%;
+	margin: 5%;
+}
+
+
 	

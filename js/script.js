@@ -79,8 +79,8 @@ function getContrast50(hexcolor){
 
 
 $(document).ready(function() {
-	$('#game').css("width", "100vh");
+
 	for (i=0; i<144; i++){
-		$('#game').append('<div id="c'+ i +'" class="col-xs-1">'+ i +'<div>');
+		$('#game').append('<div id="c'+ i +'" class="col-xs-1 card">'+ i +'<div>');
 	}
 });
