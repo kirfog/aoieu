@@ -80,6 +80,9 @@ margin: auto;
 	background-color: blue;
 	height: calc(100vh /12);
 }
+.card:hover{
+	cursor: pointer;
+}
 
 
 	
