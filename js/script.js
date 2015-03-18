@@ -78,11 +78,8 @@ function getContrast50(hexcolor){
 
 
 
-$(funcion(){
-	for (i=1; i<144; i++){
+$(document).ready(function() {
+	for (i=0; i<144; i++){
 		$('#game').append('<div id="c'+ i +'" class="col-xs-1">'+ i +'<div>');
-		$('#c'+i).css("background-color" : "green",
-			"color": "red"
-			);
 	}
 });
