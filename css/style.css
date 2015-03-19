@@ -85,6 +85,7 @@ margin: auto;
 .card { 
 	border: 1px solid green;
 	background-color: blue;
+    text-align: center;
 	height: calc(100vh /12);
     -webkit-perspective: 600px;
     -moz-perspective: 600px;
@@ -93,12 +94,7 @@ margin: auto;
 /* -- general styles, including Y axis rotation -- */
 .card .front {
     background-color: blue;
-    position: absolute;
-    top: 0;
     z-index: 900;
-    width: inherit;
-    height: inherit;
-    text-align: center;
     -webkit-transform: rotateX(0deg) rotateY(0deg);
     -webkit-transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
@@ -119,11 +115,7 @@ margin: auto;
 }
 .card .back {
     background-color: red;
-    position: absolute;
-    top: 0;
     z-index: 800;
-    width: inherit;
-    height: inherit;
     -webkit-transform: rotateY(-180deg);
     -webkit-transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
