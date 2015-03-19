@@ -69,7 +69,6 @@ margin: auto;
 }
 
 .card { 
-	background-color: green;
     text-align: center;
 	height: calc(100vh /12);
 }
