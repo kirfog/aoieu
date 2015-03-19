@@ -71,7 +71,8 @@ margin: auto;
 .card { 
     text-align: center;
 	height: calc(100vh /12);
-    padding: 1%;
+    margin: 2px;
+    padding: 2px;
 }
 /* -- make sure to declare a default for every property that you want animated -- */
 /* -- general styles, including Y axis rotation -- */
