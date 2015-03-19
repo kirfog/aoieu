@@ -63,28 +63,13 @@ height: 100vh;
 margin: auto;
 }
 
-#slow{
-
-	width: 200px;
-	height: 100px;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-}
-
-
-
-
 
 .card:hover{
 	cursor: pointer;
 }
 
-
-
 .card { 
-	border: 1px solid green;
-	background-color: blue;
+	background-color: green;
     text-align: center;
 	height: calc(100vh /12);
     -webkit-perspective: 600px;
