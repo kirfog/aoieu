@@ -91,9 +91,9 @@ $(document).ready(function() {
 	});
 
 	$('.card').hover(function(){
-            $(this).addClass('flip');
+            $(this).toggleClass('flip', 200);
         },function(){
-            $(this).removeClass('flip');
+            $(this).toggleClass('flip', 2000);
     	});
 
 });
