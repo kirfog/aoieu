@@ -78,6 +78,10 @@ margin: auto;
 .card .front {
     background-color: blue;
     z-index: 900;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
     -webkit-transform: rotateX(0deg) rotateY(0deg);
     -webkit-transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
