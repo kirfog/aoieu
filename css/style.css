@@ -112,11 +112,13 @@ margin: auto;
     transition: all .4s ease-in-out;
 }
 .card.flip .front {
+    background-color: blue;
     z-index: 900;
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
 }
 .card .back {
+    background-color: red;
     position: absolute;
     top: 0;
     z-index: 800;
