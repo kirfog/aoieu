@@ -92,6 +92,7 @@ margin: auto;
 /* -- make sure to declare a default for every property that you want animated -- */
 /* -- general styles, including Y axis rotation -- */
 .card .front {
+    background-color: blue;
     position: absolute;
     top: 0;
     z-index: 900;
@@ -112,7 +113,6 @@ margin: auto;
     transition: all .4s ease-in-out;
 }
 .card.flip .front {
-    background-color: blue;
     z-index: 900;
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
