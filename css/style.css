@@ -68,14 +68,10 @@ margin: auto;
 	cursor: pointer;
 }
 
-.card { 
-    text-align: center;
+.card {
 	height: calc(100vh /12);
-
-    padding: 2px;
 }
-/* -- make sure to declare a default for every property that you want animated -- */
-/* -- general styles, including Y axis rotation -- */
+
 .card .front {
     background-color: blue;
     z-index: 900;
@@ -89,7 +85,6 @@ margin: auto;
     -moz-transform: rotateX(0deg) rotateY(0deg);
     -moz-transform-style: preserve-3d;
     -moz-backface-visibility: hidden;
-    /* -- transition is the magic sauce for animation -- */
     -o-transition: all .4s ease-in-out;
     -ms-transition: all .4s ease-in-out;
     -moz-transition: all .4s ease-in-out;
@@ -111,11 +106,9 @@ margin: auto;
     -webkit-transform: rotateY(-180deg);
     -webkit-transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
- 
     -moz-transform: rotateY(-180deg);
     -moz-transform-style: preserve-3d;
     -moz-backface-visibility: hidden;
-    /* -- transition is the magic sauce for animation -- */
     -o-transition: all .4s ease-in-out;
     -ms-transition: all .4s ease-in-out;
     -moz-transition: all .4s ease-in-out;
