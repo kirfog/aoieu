@@ -84,7 +84,7 @@ $(document).ready(function() {
 		$('#game').append('<div class="col-xs-1 card" id="c'+ i +'" class="card"><div class="front">F</div><div class="back">'+ i +'</div></div>');
 	}
 
-	$('.card').on('click', function(){
+	$('#game').on('click', '.card', function(){
 
 		$(this).css("background-color", "white");
 
