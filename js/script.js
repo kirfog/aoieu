@@ -1,13 +1,5 @@
 $(document).ready(function() {
 
-	$(window).scroll(function () { 
-
-   $('#slow').css({
-      'top' : -($(this).scrollTop()/3)+"px",
-      "background-color" : "red"
-   }); 
-
-});
 		//snapping
 	$('body').panelSnap();
 
@@ -30,7 +22,9 @@ $(window).on('scroll', function () {
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
         menuColor = $(this).attr('menuColor');
-
+		if (typeof attr !== typeof undefined && attr !== false) {
+    		nav.find('a').css("color", "white");
+		}
 
 		scolor = rgb2hex($(this).css("background-color"));
 		iscolor = getContrast50(scolor);
