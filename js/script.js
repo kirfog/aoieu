@@ -22,11 +22,6 @@ $(window).on('scroll', function () {
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
         menuColor = $(this).attr('menuColor');
-
-
-		scolor = rgb2hex($(this).css("background-color"));
-		iscolor = getContrast50(scolor);
-		iiscolor = getContrast50(iscolor);
 		
     if (cur_pos >= top && cur_pos <= bottom) {
 
@@ -37,9 +32,9 @@ $(window).on('scroll', function () {
 		nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
 	  	if (typeof attr !== typeof undefined && attr !== false) {
-    		nav.find('a').css("color", "white");
+    		$('nav a').css("color", "white");
 		}else{
-			nav.find('a').css("color", menuColor);
+			$('nav a').css("color", menuColor);
 			}
 		nav.find('a[href="#'+$(this).attr('id')+'"]').css("color", "white");
     }
