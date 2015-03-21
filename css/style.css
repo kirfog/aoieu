@@ -44,20 +44,13 @@ overflow-x: hidden;
     padding: 4em; 
 }
 
-
-
 	
-	.green{
-	background-color: green;
-	}
-	.white{
-	background-color: white;
-	}
-	
-	.back_image{
+	#theMilkyWay{
 		background-size:100% auto;
 		background-image: url("img/The_Milky_Way.jpg");
 }
+
+
 
 .pd10{
 	padding: 10%;
@@ -66,7 +59,7 @@ overflow-x: hidden;
 	padding: 5%;
 }
 
-.height100{
+.full{
 height: 100vh;
 }
 
