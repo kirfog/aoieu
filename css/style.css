@@ -51,8 +51,8 @@ overflow-x: hidden;
 }
 
     #theMilkyWay .sectionHeader{
-
-      top: 50vh;
+      position: relative;
+      top: 200px;
       text-align: center;
       color: white;
       font-size: 3em;
