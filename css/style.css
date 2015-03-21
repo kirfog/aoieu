@@ -52,13 +52,13 @@ overflow-x: hidden;
 
     #theMilkyWay .sectionHeader{
 
-      top: 50%;
+      top: 50vh;
       text-align: center;
       color: white;
   }
 
     #theMilkyWay .sectionHeader h1{
-
+      font-size: 3em;
     }
 
 
