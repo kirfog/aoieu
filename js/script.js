@@ -22,9 +22,7 @@ $(window).on('scroll', function () {
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
         menuColor = $(this).attr('menuColor');
-		if (typeof attr !== typeof undefined && attr !== false) {
-    		nav.find('a').css("color", "white");
-		}
+
 
 		scolor = rgb2hex($(this).css("background-color"));
 		iscolor = getContrast50(scolor);
@@ -38,7 +36,11 @@ $(window).on('scroll', function () {
 		nav.find('a').parent().removeClass('active');
 		nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
-		nav.find('a').css("color", menuColor);
+	  	if (typeof attr !== typeof undefined && attr !== false) {
+    		nav.find('a').css("color", "white");
+		}else{
+			nav.find('a').css("color", menuColor);
+			}
 		nav.find('a[href="#'+$(this).attr('id')+'"]').css("color", "white");
     }
   });
