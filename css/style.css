@@ -49,10 +49,12 @@ overflow-x: hidden;
 		background-size:100% auto;
 		background-image: url("../img/theMilkyWay.jpg");
     text-align: center;
-    
 }
 
-
+  #theMilkyWay h1{
+    vertical-align: middle;
+    color: white;
+}
 
 
 
