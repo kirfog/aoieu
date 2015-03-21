@@ -39,7 +39,7 @@ $(window).on('scroll', function () {
 		nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
 		nav.find('a').css("color", menuColor);
-		nav.find('a[href="#'+$(this).attr('id')+'"]').css("color",white);
+		nav.find('a[href="#'+$(this).attr('id')+'"]').css("color", "white");
     }
   });
 });
