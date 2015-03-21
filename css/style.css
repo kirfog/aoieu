@@ -51,7 +51,7 @@ overflow-x: hidden;
     text-align: center;
 }
 
-  #theMilkyWay h1{
+  #theMilkyWay .sectionHeader{
     vertical-align: middle;
     color: white;
 }
