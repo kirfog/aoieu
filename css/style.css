@@ -48,7 +48,12 @@ overflow-x: hidden;
 	#theMilkyWay{
 		background-size:100% auto;
 		background-image: url("../img/theMilkyWay.jpg");
+    text-align: center;
+    
 }
+
+
+
 
 
 
