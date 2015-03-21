@@ -29,6 +29,9 @@ $(window).on('scroll', function () {
 	  
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
+        menuColor = $(this).attr('menuColor');
+
+
 		scolor = rgb2hex($(this).css("background-color"));
 		iscolor = getContrast50(scolor);
 		iiscolor = getContrast50(iscolor);
@@ -41,7 +44,7 @@ $(window).on('scroll', function () {
 		nav.find('a').parent().removeClass('active');
 		nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
-		nav.find('a').css("color",iscolor);
+		nav.find('a').css("color", menuColor);
 		nav.find('a[href="#'+$(this).attr('id')+'"]').css("color",iiscolor);
     }
   });
@@ -74,26 +77,3 @@ function rgb2hex(rgb){
 function getContrast50(hexcolor){
     return (parseInt(hexcolor, 16) > 0xffffff/2) ? 'black':'white';
 }
-
-
-
-
-$(document).ready(function() {
-
-	for (i=0; i<144; i++){
-		$('#game').append('<div class="col-xs-1 card" id="c'+ i +'"><div class="front">F</div><div class="back">'+ i +'</div></div>');
-	}
-
-	$('#game').on('click', '.card', function(){
-
-		$(this).css("background-color", "white");
-
-	});
-
-	$('.card').hover(function(){
-            $(this).toggleClass('flip', 200);
-        },function(){
-            $(this).toggleClass('flip', 2000);
-    	});
-
-});
