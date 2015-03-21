@@ -56,10 +56,8 @@ overflow-x: hidden;
 	
 	.back_image{
 		background-size:100% auto;
-		background: url("img/The_Milky_Way.jpg") center;
-	}
-
-
+		background-image: url("img/The_Milky_Way.jpg");
+}
 
 .pd10{
 	padding: 10%;
