@@ -35,6 +35,11 @@ $(window).on('scroll', function () {
     		$('nav a').css("color", "white");
 		}else{
 			$('nav a').css("color", menuColor);
+
+
+			console.log(menuColor);
+
+
 			}
 		nav.find('a[href="#'+$(this).attr('id')+'"]').css("color", "white");
     }
