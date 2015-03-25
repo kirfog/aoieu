@@ -37,7 +37,7 @@ overflow-x: hidden;
     right: 2em;
     background: black;
     background: rgba(0,0,0,0.55);
-    padding: 2em;
+    padding: 1em;
     color: white;
 }
 
@@ -57,7 +57,7 @@ overflow-x: hidden;
     transform: translateY(-50%);
       text-align: center;
       color: white;
-      font-size: 3em;
+      font-size: 4em;
     }
 
 

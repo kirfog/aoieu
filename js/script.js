@@ -46,9 +46,18 @@ $(window).on('scroll', function () {
 		scrollToID(id, 800);
 	});
 
+
+	$('#back').on("click", function (){
+		scrollToID('theMilkyWay', 800);
+	});
 });
 
 function scrollToID(id, speed){
 	var targetOffset = $(id).offset().top;
-	$('html,body').animate({scrollTop:targetOffset}, speed);
+	$('html,body').animate({
+		param1: value1,
+		param2: value2},
+		speed, function() {
+		/* stuff to do after animation is complete */
+	});imate({scrollTop:targetOffset}, speed);
 }
