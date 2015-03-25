@@ -30,7 +30,7 @@ $(window).on('scroll', function () {
 		}
 		*/
 
-		menuColor = (typeof menuColor == typeof undefined) ? "white" : menuColor;
+		menuColor = (typeof menuColor == typeof undefined) ? "white" : "black";
 		console.log(menuColor);
 		
     if (cur_pos >= top && cur_pos <= bottom) {
