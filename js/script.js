@@ -42,7 +42,7 @@ $(window).on('scroll', function () {
 
   });
 
-  	if (cur_pos >= 300) {
+  	if (cur_pos <= 300) {
 		$('#backToTop').hide(200);
 	}else {
 		$('#backToTop').show(200);
