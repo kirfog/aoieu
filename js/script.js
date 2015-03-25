@@ -19,8 +19,6 @@ $(window).on('scroll', function () {
   var cur_pos = $(this).scrollTop();
   
   
-
-
   sections.each(function() {
 	  
     var top = $(this).offset().top - nav_height,
@@ -42,14 +40,16 @@ $(window).on('scroll', function () {
 
   });
 
-  	if (cur_pos <= 300) {
+  if (cur_pos <= 300) {
 		$('#backToTop').hide(200);
 	}else {
 		$('#backToTop').show(200);
 	}
 
-});
-			//menu_click_scroling
+
+});//scrolling
+
+//menu_click_scroling
 	nav.find('a').on("click", function(){
 		event.preventDefault();
 		$(".navbar-collapse").collapse('hide');//hides mobile menu
