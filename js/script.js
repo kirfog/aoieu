@@ -46,6 +46,13 @@ $(window).on('scroll', function () {
 		scrollToID(id, 800);
 	});
 
+
+	if (cur_pos >= 300) {
+		$('#backToTop').hide(200);
+	}else {
+		$('#backToTop').show(200);
+	}
+
 	$('#backToTop').on('click',function(){
 		event.preventDefault();
 		$("html, body").animate({ scrollTop: "0" });
