@@ -48,7 +48,8 @@ $(window).on('scroll', function () {
 
 
 	$('#backlink').on("click", function (){
-		scrollToID('theMilkyWay', 800);
+		id = 'theMilkyWay';
+		scrollToID(id, 800);
 	});
 });
 
