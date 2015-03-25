@@ -21,17 +21,10 @@ $(window).on('scroll', function () {
   sections.each(function() {
 	  
     var top = $(this).offset().top - nav_height,
-        bottom = top + $(this).outerHeight();
-        
-        /*
+        bottom = top + $(this).outerHeight(),
         menuColor = $(this).attr('menuColor');
-		if (typeof menuColor == typeof undefined) {
-    		menuColor = 'white';
-		}
-		*/
 
-		menuColor = (typeof menuColor == typeof undefined) ? "white" : "black";
-		console.log(menuColor);
+		menuColor = (typeof menuColor == typeof undefined) ? "white" : menuColor;
 		
     if (cur_pos >= top && cur_pos <= bottom) {
 		sections.removeClass('active');
@@ -53,16 +46,9 @@ $(window).on('scroll', function () {
 		scrollToID(id, 800);
 	});
 
-
-
 });
 
 function scrollToID(id, speed){
 	var targetOffset = $(id).offset().top;
-	$('html,body').animate({
-		param1: value1,
-		param2: value2},
-		speed, function() {
-		/* stuff to do after animation is complete */
-	});imate({scrollTop:targetOffset}, speed);
+	$('html,body').animate({scrollTop:targetOffset}, speed);
 }
