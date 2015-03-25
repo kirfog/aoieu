@@ -23,18 +23,21 @@ $(window).on('scroll', function () {
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
         menuColor = $(this).attr('menuColor');
-		if (typeof menuColor == typeof undefined && menuColor == false) {
+		if (typeof menuColor == typeof undefined) {
     		menuColor = 'white';
 		}
 
+		(parseInt(hexcolor, 16) > 0xffffff/2) ? 'black':'white';
 			console.log(menuColor);
 			console.log(typeof(menuColor));
 		
     if (cur_pos >= top && cur_pos <= bottom) {
 		sections.removeClass('active');
 		$(this).addClass('active');
+		
 		nav.find('a').parent().removeClass('active');
 		nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
+
 		nav.find('a').css("color", menuColor);
 		nav.find('a[href="#'+$(this).attr('id')+'"]').css("color", "white");
     }
