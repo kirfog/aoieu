@@ -22,7 +22,8 @@ $(window).on('scroll', function () {
 	  
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
-		menuColor = (typeof menuColor == typeof undefined) ? "white" : $(this).attr('menuColor');
+        menuColor = $(this).attr('menuColor');
+		menuColor = (typeof menuColor == typeof undefined) ? "white" : menuColor;
 		
     if (cur_pos >= top && cur_pos <= bottom) {
 		sections.removeClass('active');
