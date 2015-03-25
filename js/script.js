@@ -46,6 +46,10 @@ $(window).on('scroll', function () {
 		scrollToID(id, 800);
 	});
 
+	$('#backToTop').on('click',function(){
+		('html,body').animate(0, 500);
+	});
+
 });
 
 function scrollToID(id, speed){
