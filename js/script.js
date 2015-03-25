@@ -21,9 +21,8 @@ $(window).on('scroll', function () {
   sections.each(function() {
 	  
     var top = $(this).offset().top - nav_height,
-        bottom = top + $(this).outerHeight(),
+        bottom = top + $(this).outerHeight();
         menuColor = $(this).attr('menuColor');
-		
 		menuColor = (typeof menuColor == typeof undefined) ? "white" : menuColor;
 		
     if (cur_pos >= top && cur_pos <= bottom) {
