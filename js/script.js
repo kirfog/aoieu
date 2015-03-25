@@ -27,7 +27,7 @@ $(window).on('scroll', function () {
     		menuColor = 'white';
 		}
 
-		(parseInt(hexcolor, 16) > 0xffffff/2) ? 'black':'white';
+			console.log(typeof menuColor == typeof undefined) ? 'white':menuColor;
 			console.log(menuColor);
 			console.log(typeof(menuColor));
 		
