@@ -18,6 +18,9 @@ $(document).ready(function() {
 $(window).on('scroll', function () {
   var cur_pos = $(this).scrollTop();
   
+  
+
+
   sections.each(function() {
 	  
     var top = $(this).offset().top - nav_height,
@@ -36,7 +39,15 @@ $(window).on('scroll', function () {
 		nav.find('a').css("color", menuColor);
 		nav.find('a[href="#'+$(this).attr('id')+'"]').css("color", "white");
     }
+
   });
+
+  	if (cur_pos >= 300) {
+		$('#backToTop').hide(200);
+	}else {
+		$('#backToTop').show(200);
+	}
+
 });
 			//menu_click_scroling
 	nav.find('a').on("click", function(){
@@ -46,12 +57,6 @@ $(window).on('scroll', function () {
 		scrollToID(id, 800);
 	});
 
-
-	if (cur_pos >= 300) {
-		$('#backToTop').hide(200);
-	}else {
-		$('#backToTop').show(200);
-	}
 
 	$('#backToTop').on('click',function(){
 		event.preventDefault();
