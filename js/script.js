@@ -47,7 +47,7 @@ $(window).on('scroll', function () {
 	});
 
 
-	$('#back').on("click", function (){
+	$('#backlink').on("click", function (){
 		scrollToID('theMilkyWay', 800);
 	});
 });
