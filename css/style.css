@@ -30,6 +30,9 @@ overflow-x: hidden;
     margin-left: -9999px;
 }
 
+#backToTop {
+  visibility: none;
+}
 #back{
     position: fixed;
     bottom: 2em;
@@ -38,7 +41,6 @@ overflow-x: hidden;
     background: rgba(0,0,0,0.55);
     padding: 1em;
     color: white;
-    visibility: none;
 }
 
 #back:hover{
