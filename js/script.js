@@ -22,13 +22,16 @@ $(window).on('scroll', function () {
 	  
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
+        
+        /*
         menuColor = $(this).attr('menuColor');
 		if (typeof menuColor == typeof undefined) {
     		menuColor = 'white';
 		}
+		*/
 
-			console.log(typeof menuColor == typeof undefined) ? '1':'2';
-			console.log(menuColor);
+		menuColor = (typeof menuColor == typeof undefined) ? "white" : menuColor;
+		console.log(menuColor);
 		
     if (cur_pos >= top && cur_pos <= bottom) {
 		sections.removeClass('active');
@@ -45,9 +48,7 @@ $(window).on('scroll', function () {
 			//menu_click_scroling
 	nav.find('a').on("click", function(){
 		event.preventDefault();
-	
-			$(".navbar-collapse").collapse('hide');//hides mobile menu
-		
+		$(".navbar-collapse").collapse('hide');//hides mobile menu
 		id = $(this).attr("href");
 		scrollToID(id, 800);
 	});
@@ -57,16 +58,4 @@ $(window).on('scroll', function () {
 function scrollToID(id, speed){
 	var targetOffset = $(id).offset().top;
 	$('html,body').animate({scrollTop:targetOffset}, speed);
-}
-
-function rgb2hex(rgb){
- rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
- return (rgb && rgb.length === 4) ? 
-  ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
-  ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
-  ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
-}
-
-function getContrast50(hexcolor){
-    return (parseInt(hexcolor, 16) > 0xffffff/2) ? 'black':'white';
 }
