@@ -27,9 +27,8 @@ $(window).on('scroll', function () {
     		menuColor = 'white';
 		}
 
-			console.log(typeof menuColor == typeof undefined) ? 'white':menuColor;
+			console.log(typeof menuColor == typeof undefined) ? '1':'2';
 			console.log(menuColor);
-			console.log(typeof(menuColor));
 		
     if (cur_pos >= top && cur_pos <= bottom) {
 		sections.removeClass('active');
