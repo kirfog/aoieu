@@ -22,6 +22,12 @@ $(window).on('scroll', function () {
     var top = $(this).offset().top - nav_height,
         bottom = top + $(this).outerHeight();
         menuColor = $(this).attr('menuColor');
+		if (typeof menuColor == typeof undefined && menuColor == false) {
+    		menuColor = 'white';
+		}
+
+			console.log(menuColor);
+			console.log(typeof(menuColor));
 		
     if (cur_pos >= top && cur_pos <= bottom) {
 
@@ -30,17 +36,8 @@ $(window).on('scroll', function () {
 	  
 		nav.find('a').parent().removeClass('active');
 		nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
-	  
-	  	if (typeof menuColor == typeof undefined && menuColor == false) {
-    		menuColor = 'white';
+		nav.find('a').css("color", menuColor);
 		}
-		$('nav a').css("color", menuColor);
-
-
-			console.log(menuColor);
-			console.log(typeof(menuColor));
-
-			}
 		nav.find('a[href="#'+$(this).attr('id')+'"]').css("color", "white");
     }
   });
