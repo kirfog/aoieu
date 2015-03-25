@@ -48,7 +48,7 @@ $(window).on('scroll', function () {
 
 	$('#backToTop').on('click',function(){
 		event.preventDefault();
-		('html,body').animate({scrollTop:0}, 500);
+		$("html, body").animate({ scrollTop: "0" });
 	});
 
 });
