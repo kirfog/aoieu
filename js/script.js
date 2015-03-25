@@ -47,10 +47,7 @@ $(window).on('scroll', function () {
 	});
 
 
-	$('#backlink').on("click", function (){
-		id = 'theMilkyWay';
-		scrollToID(id, 800);
-	});
+
 });
 
 function scrollToID(id, speed){
