@@ -31,7 +31,7 @@ $(window).on('scroll', function () {
 		nav.find('a').parent().removeClass('active');
 		nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
 	  
-	  	if (typeof menuColor !== typeof undefined && menuColor !== false) {
+	  	if (typeof menuColor == typeof undefined && menuColor == false) {
     		$('nav a').css("color", "white");
 		}else{
 			$('nav a').css("color", menuColor);
