@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+	
+
 		//snapping
 	$('body').panelSnap();
 
