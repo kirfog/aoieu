@@ -11,7 +11,7 @@ if ( typeof Object.create !== 'function' ) {
 
 /*!
  * jQuery panelSnap
- * Version 0.14.0
+ * Version 0.15.1
  *
  * Requires:
  * - jQuery 1.7 or higher (no jQuery.migrate needed)
@@ -41,6 +41,7 @@ if ( typeof Object.create !== 'function' ) {
  * Date: Wed Feb 13 16:05:00 2013 +0100
  */
 (function($, window, document, undefined) {
+  'use strict';
 
   var pluginName = 'panelSnap';
   var storageName = 'plugin_' + pluginName;
@@ -50,7 +51,6 @@ if ( typeof Object.create !== 'function' ) {
     isMouseDown: false,
     isSnapping: false,
     enabled: true,
-    scrollInterval: 0,
     scrollOffset: 0,
 
     init: function(options, container) {
@@ -72,8 +72,6 @@ if ( typeof Object.create !== 'function' ) {
           self.$snapContainer = $('body');
         }
       }
-
-      self.updateScrollInterval();
 
       self.options = $.extend(true, {}, $.fn.panelSnap.options, options);
 
@@ -101,12 +99,20 @@ if ( typeof Object.create !== 'function' ) {
 
       self.bindProxied($(window), 'resizestop', self.resize);
 
-      if(self.options.keyboardNavigation.enabled) {
-        self.bindProxied($(window), 'keydown', self.keyDown, self.$eventContainer);
+      if(self.options.$menu) {
+        self.bindProxied(self.options.$menu, 'click', self.captureMenuClick, self.options.menuSelector);
       }
 
-      if(self.options.$menu !== false) {
-        self.bindProxied($(self.options.$menu), 'click', self.captureMenuClick, self.options.menuSelector);
+      if(self.options.navigation.keys.nextKey || self.options.navigation.keys.prevKey) {
+        self.bindProxied($(window), 'keydown', self.keyDown);
+      }
+
+      if (self.options.navigation.buttons.$nextButton) {
+        self.bindProxied(self.options.navigation.buttons.$nextButton, 'click', self.captureNextClick);
+      }
+
+      if (self.options.navigation.buttons.$prevButton) {
+        self.bindProxied(self.options.navigation.buttons.$prevButton, 'click', self.capturePrevClick);
       }
 
     },
@@ -156,35 +162,10 @@ if ( typeof Object.create !== 'function' ) {
         return;
       }
 
-      self.updateScrollInterval();
-
-      var offset = self.$snapContainer.scrollTop();
-      var scrollDifference = offset - self.scrollOffset;
-      var maxOffset = self.$container[0].scrollHeight - self.scrollInterval;
-      var panelCount = self.getPanel().length - 1;
-
-      var childNumber;
-      if(
-        self.enabled &&
-        scrollDifference < -self.options.directionThreshold &&
-        scrollDifference > -self.scrollInterval
-      ) {
-        childNumber = Math.floor(offset / self.scrollInterval);
-      } else if(
-        self.enabled &&
-        scrollDifference > self.options.directionThreshold &&
-        scrollDifference < self.scrollInterval
-      ) {
-        childNumber = Math.ceil(offset / self.scrollInterval);
-      } else {
-        childNumber = Math.round(offset / self.scrollInterval);
-      }
-
-      childNumber = Math.max(0, Math.min(childNumber, panelCount));
-
-      var $target = self.getPanel(':eq(' + childNumber + ')');
-
-      if(!self.enabled) {
+      // Check if enabled or just 1 panel in viewport
+      var panelsInViewPort = self.getPanelsInViewport();
+      if (!self.enabled || panelsInViewPort.length < 2) {
+        $target = panelsInViewPort.eq(0);
         if(!$target.is(self.getPanel('.active'))) {
           self.activatePanel($target);
         }
@@ -192,10 +173,22 @@ if ( typeof Object.create !== 'function' ) {
         return;
       }
 
-      // To get normal scrolling in panels taller than the viewport,
-      // stop if there's no multiple panels in viewport
-      if (self.getPanelsInViewport().length < 2)
+      var offset = self.$snapContainer.scrollTop();
+      var scrollDifference = offset - self.scrollOffset;
+      var overThreshold = Math.abs(scrollDifference) > self.options.directionThreshold;
+
+      var panelNumber;
+      if(scrollDifference > 0) {
+        panelNumber = overThreshold ? 1 : 0;
+      } else if(scrollDifference < 0) {
+        panelNumber = overThreshold ? 0 : 1;
+      } else {
+        // Nothing to scroll, get out.
         return;
+      }
+
+      var $target = panelsInViewPort.eq(panelNumber);
+      var maxOffset = self.$container[0].scrollHeight - self.scrollInterval;
 
       if (offset <= 0 || offset >= maxOffset) {
         // Only activate, prevent stuttering
@@ -211,14 +204,21 @@ if ( typeof Object.create !== 'function' ) {
     getPanelsInViewport: function() {
 
       var self = this;
-      var $window = $(window);
 
-      var viewport = { top: $window.scrollTop() };
-      viewport.bottom = viewport.top + $window.height();
+      var viewport = { top: self.$snapContainer.scrollTop() };
+      viewport.bottom = viewport.top + self.$snapContainer.height();
 
       var panels = self.getPanel().filter(function (_, el) {
         var $el = $(el);
-        var bounds = $el.offset();
+        var bounds;
+
+        if(self.$container.is('body')) {
+          bounds = $el.offset();
+        } else {
+          bounds = $el.position();
+          bounds.top += self.$snapContainer.scrollTop();
+        }
+
         bounds.bottom = bounds.top + $el.outerHeight();
 
         return !(viewport.bottom < bounds.top || viewport.top > bounds.bottom);
@@ -236,7 +236,7 @@ if ( typeof Object.create !== 'function' ) {
 
       if(self.isSnapping) {
         self.scrollOffset = self.$snapContainer.scrollTop();
-        self.$container.stop(true);
+        self.$snapContainer.stop(true);
         self.isSnapping = false;
       }
 
@@ -266,39 +266,64 @@ if ( typeof Object.create !== 'function' ) {
 
       var self = this;
 
-      var nav = self.options.keyboardNavigation;
+      var nav = self.options.navigation;
 
       if(!self.enabled) {
         return;
       }
 
-      if (self.isSnapping) {
-        if(e.which == nav.previousPanelKey || e.which == nav.nextPanelKey) {
+      switch(e.which) {
+        case nav.keys.prevKey:
+        case nav.keys.nextKey:
           e.preventDefault();
-          return false;
-        }
+      }
 
+      if (self.isSnapping) {
         return;
       }
 
       switch(e.which) {
-        case nav.previousPanelKey:
-          e.preventDefault();
+        case nav.keys.prevKey:
           self.snapTo('prev', nav.wrapAround);
           break;
-        case nav.nextPanelKey:
-          e.preventDefault();
+        case nav.keys.nextKey:
           self.snapTo('next', nav.wrapAround);
           break;
       }
 
     },
 
-    resize: function(e) {
+    captureNextClick: function(e) {
 
       var self = this;
 
-      self.updateScrollInterval();
+      e.preventDefault();
+
+      if (self.isSnapping) {
+        return;
+      }
+
+      self.snapTo('next', self.options.navigation.wrapAround);
+
+    },
+
+    capturePrevClick: function(e) {
+
+      var self = this;
+
+      e.preventDefault();
+
+      if (self.isSnapping) {
+        return;
+      }
+
+      self.snapTo('prev', self.options.navigation.wrapAround);
+
+    },
+
+    resize: function(e) {
+
+      var self = this;
 
       if(!self.enabled) {
         return;
@@ -338,12 +363,14 @@ if ( typeof Object.create !== 'function' ) {
 
       var scrollTarget = 0;
       if(self.$container.is('body')) {
-        scrollTarget = $target.offset().top - self.options.offset;
+        scrollTarget = $target.offset().top;
       } else {
-        scrollTarget = self.$snapContainer.scrollTop() + $target.position().top - self.options.offset;
+        scrollTarget = self.$snapContainer.scrollTop() + $target.position().top;
       }
 
-      self.$snapContainer.stop(true).animate({
+      scrollTarget -=  self.options.offset;
+
+      self.$snapContainer.stop(true).delay(self.options.delay).animate({
         scrollTop: scrollTarget
       }, self.options.slideSpeed, self.options.easing, function() {
 
@@ -376,6 +403,34 @@ if ( typeof Object.create !== 'function' ) {
         var itemSelector = self.options.menuSelector + attribute;
         var $itemToActivate = $(itemSelector, self.options.$menu);
         $itemToActivate.addClass('active');
+      }
+
+      var nav = self.options.navigation;
+
+      if(!nav.wrapAround) {
+        var $panels = self.getPanel();
+        var index = $panels.index(self.getPanel('.active'));
+
+        if (nav.buttons.$nextButton !== false ) {
+          $target = $panels.eq(index + 1);
+          if($target.length < 1) {
+            $(nav.buttons.$nextButton).attr('aria-disabled', 'true');
+            $(nav.buttons.$nextButton).addClass('disabled');
+          } else {
+            $(nav.buttons.$nextButton).attr('aria-disabled', 'false');
+            $(nav.buttons.$nextButton).removeClass('disabled');
+          }
+        }
+
+        if (nav.buttons.$prevButton !== false ) {
+          if(index < 1) {
+            $(nav.buttons.$prevButton).attr('aria-disabled', 'true');
+            $(nav.buttons.$prevButton).addClass('disabled');
+          } else {
+            $(nav.buttons.$prevButton).attr('aria-disabled', 'false');
+            $(nav.buttons.$prevButton).removeClass('disabled');
+          }
+        }
       }
 
       self.options.onActivate.call(self, $target);
@@ -440,17 +495,6 @@ if ( typeof Object.create !== 'function' ) {
       if($target.length > 0) {
         self.snapToPanel($target);
       }
-
-    },
-
-    getScrollInterval: function () {
-
-      return this.$container.is('body') ? window.innerHeight : this.$container.height();
-    },
-
-    updateScrollInterval: function () {
-
-      this.scrollInterval = this.getScrollInterval();
 
     },
 
@@ -532,13 +576,19 @@ if ( typeof Object.create !== 'function' ) {
     onActivate: function(){},
     directionThreshold: 50,
     slideSpeed: 200,
+    delay: 0,
     easing: 'linear',
     offset: 0,
-    keyboardNavigation: {
-      enabled: false,
-      nextPanelKey: 40,
-      previousPanelKey: 38,
-      wrapAround: true
+    navigation: {
+      keys: {
+        nextKey: false,
+        prevKey: false
+      },
+      buttons: {
+        $nextButton: false,
+        $prevButton: false
+      },
+      wrapAround: false
     }
   };
 
@@ -592,23 +642,23 @@ if ( typeof Object.create !== 'function' ) {
 
       function trigger(event, scrolling) {
 
-        event.type = scrolling ? "scrollstart" : "scrollstop";
+        event.type = scrolling ? 'scrollstart' : 'scrollstop';
         $this.trigger(event);
 
       }
 
-      $this.on("touchstart", function(event) {
+      $this.on('touchstart', function(event) {
         isTouching = true;
       });
 
-      $this.on("touchleave touchcancel touchend", function(event) {
+      $this.on('touchleave touchcancel touchend', function(event) {
         isTouching = false;
         setTimeout(function () {
           clearTimeout(timer);
         }, 50);
       });
 
-      $this.on("touchmove scroll", function(event) {
+      $this.on('touchmove scroll', function(event) {
 
         if (isTouching) {
           return;
@@ -700,12 +750,12 @@ if ( typeof Object.create !== 'function' ) {
 
       function trigger(event, resizing) {
 
-        event.type = resizing ? "resizestart" : "resizestop";
+        event.type = resizing ? 'resizestart' : 'resizestop';
         $this.trigger(event);
 
       }
 
-      $this.on("resize", function(event) {
+      $this.on('resize', function(event) {
 
         if(!$.event.special.resizestart.enabled) {
           return;
@@ -791,11 +841,11 @@ if ( typeof Object.create !== 'function' ) {
 
   $.fn.extend({
     mousewheel: function(fn) {
-      return fn ? this.bind("mousewheel", fn) : this.trigger("mousewheel");
+      return fn ? this.bind('mousewheel', fn) : this.trigger('mousewheel');
     },
 
     unmousewheel: function(fn) {
-      return this.unbind("mousewheel", fn);
+      return this.unbind('mousewheel', fn);
     }
   });
 
@@ -808,7 +858,7 @@ if ( typeof Object.create !== 'function' ) {
         deltaY = 0;
 
     event = $.event.fix(orgEvent);
-    event.type = "mousewheel";
+    event.type = 'mousewheel';
 
     // Old school scrollwheel delta
     if ( orgEvent.wheelDelta ) { delta = orgEvent.wheelDelta/120; }
