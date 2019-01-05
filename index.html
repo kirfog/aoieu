@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/style.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body>
+<body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -31,7 +31,7 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#song">
-              <img style="max-width:100px; margin-top: -7px;" src="img/logo.png">
+              <img style="max-width:100px; margin-top: -7px;" src="{% static 'aoieu/img/logo.png' %}">
           </a>
           </div>
 
@@ -48,25 +48,25 @@
         </div><!-- /.container-fluid -->
       </nav>
 
-      <section id="theMilkyWay" class="full">
+      <section id="theMilkyWay" class="full sect">
         <div class="sectionHeader">
           The Milky Way
         </div>
       </section>
 
-      <section id="theSun" class="full">
+      <section id="theSun" class="full sect">
         <div class="sectionHeader">
           The Sun
         </div>
       </section>
 
-      <section id="theEarth" class="full">
+      <section id="theEarth" class="full sect">
         <div class="sectionHeader">
           The Earth
         </div>
       </section>
 
-      <section id="theMan" class="full">
+      <section id="theMan" class="full sect">
 
         <div id="images" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
@@ -114,9 +114,9 @@
         </div>
       </section>
 
-      <section id="theWay" class="full" menuColor="black">
-        <p id="anim">aoieu</p>
-      </section>
+    <section id="theWay" class="full sect" menuColor="black">
+      <p id="anim">aoieu</p>
+    </section>
     
 
     <a id="backToTop" href="#theMilkyWay">
@@ -130,8 +130,8 @@
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="js/script.js"></script>
-        <script src="js/vendor/jquery.panelSnap.js"></script>        
+        <script src="js/vendor/jquery.scrollify.js"></script>
+        <script src="js/script.js"></script>      
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
