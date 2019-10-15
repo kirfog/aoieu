@@ -1,6 +1,6 @@
 /*!
  * jQuery Scrollify
- * Version 1.0.19
+ * Version 1.0.20
  *
  * Requires:
  * - jQuery 1.7 or higher
@@ -93,7 +93,7 @@ if touchScroll is false - update index
       afterRender:function() {}
     };
   function getportHeight() {
-    return ($window.height() + settings.offset);
+    return (window.innerHeight + settings.offset);
   }
   function animateScroll(index,instant,callbacks,toTop) {
     if(currentIndex===index) {
@@ -105,8 +105,8 @@ if touchScroll is false - update index
     if(names[index]) {
       scrollable = false;
       if(firstLoad===true) {
-        settings.afterRender();
         firstLoad = false;
+        settings.afterRender();
       }
       if(callbacks) {
         if( typeof settings.before == 'function' && settings.before(index,elements) === false ){
@@ -114,7 +114,7 @@ if touchScroll is false - update index
         }
       }
       interstitialIndex = 1;
-      destination = heights[index];
+      destination = (!index) ? 0 : heights[index];
       if(firstLoad===false && currentIndex>index && toTop===false) {
         //We're going backwards
         if(overflow[index]) {
@@ -282,7 +282,12 @@ if touchScroll is false - update index
 
 
         e = e || window.event;
-        var value = e.originalEvent.wheelDelta || -e.originalEvent.deltaY || -e.originalEvent.detail;
+        var value;
+        if (e.originalEvent) {
+            value = e.originalEvent.wheelDelta || -e.originalEvent.deltaY || -e.originalEvent.detail;
+        } else {
+            value = e.wheelDelta || -e.deltaY || -e.detail;
+        }
         var delta = Math.max(-1, Math.min(1, value));
 
         //delta = delta || -e.originalEvent.detail / 3 || e.originalEvent.wheelDelta / 120;
@@ -372,7 +377,7 @@ if touchScroll is false - update index
         } else {
           $("body").css({"overflow":"hidden"});
         }
-        $window.on(wheelEvent,manualScroll.wheelHandler);
+        window.addEventListener(wheelEvent, manualScroll.wheelHandler, { passive: false });
         //$(document).bind(wheelEvent,manualScroll.wheelHandler);
         $window.on('keydown', manualScroll.keyHandler);
       }
@@ -793,7 +798,8 @@ if touchScroll is false - update index
       $window.off('mouseup', manualScroll.handleMouseup);
       $window.off('scroll', manualScroll.handleScroll);
     }
-    $window.off(wheelEvent,manualScroll.wheelHandler);
+    // $window.off(wheelEvent,manualScroll.wheelHandler);
+    window.removeEventListener(wheelEvent,manualScroll.wheelHandler);
     $window.off('keydown', manualScroll.keyHandler);
 
     if (document.addEventListener && settings.touchScroll) {
@@ -805,6 +811,8 @@ if touchScroll is false - update index
     names = [];
     elements = [];
     overflow = [];
+    firstLoad=true;
+    initialised=false;
   };
   scrollify.update = function() {
     if(!initialised) {
