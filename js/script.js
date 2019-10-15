@@ -48,7 +48,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		$(".navbar-collapse").collapse('hide');
 		id = $(this).attr("href");
-		scrollToID(id, 200);
+		scrollToID(id, 350);
 	});
 
 
