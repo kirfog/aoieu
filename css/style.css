@@ -88,8 +88,16 @@ body::-webkit-scrollbar {
     background: url("../img/theSun.jpg") no-repeat center center;
     background-size: cover;
 }
+#theMercury {
+    background: url("../img/theMercury.jpg") no-repeat center center;
+    background-size: cover;
+}
 #theEarth {
     background: url("../img/theEarth.jpg") no-repeat center center;
+    background-size: cover;
+}
+#theMars {
+    background: url("../img/theMars.jpg") no-repeat center center;
     background-size: cover;
 }
 
