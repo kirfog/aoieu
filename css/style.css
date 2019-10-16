@@ -92,6 +92,10 @@ body::-webkit-scrollbar {
     background: url("../img/theMercury.jpg") no-repeat center center;
     background-size: cover;
 }
+#theVenus {
+    background: url("../img/theVenus.jpg") no-repeat center center;
+    background-size: cover;
+}
 #theEarth {
     background: url("../img/theEarth.jpg") no-repeat center center;
     background-size: cover;
