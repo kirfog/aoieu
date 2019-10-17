@@ -104,6 +104,10 @@ body::-webkit-scrollbar {
     background: url("../img/theMars.jpg") no-repeat center center;
     background-size: cover;
 }
+#theJupiter {
+    background: url("../img/thejupiter.jpg") no-repeat center center;
+    background-size: cover;
+}
 
 
 #anim {
