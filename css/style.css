@@ -109,6 +109,11 @@ body::-webkit-scrollbar {
     background-size: cover;
 }
 
+#theSaturn {
+    background: url("../img/theSaturn.jpg") no-repeat center center;
+    background-size: cover;
+}
+
 
 #anim {
   position: relative;
