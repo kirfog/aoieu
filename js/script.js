@@ -15,16 +15,13 @@ $(document).ready(function() {
 	$(window).on('scroll', function () {
   		var cur_pos = $(this).scrollTop();
 		sections.each(function() {
-	  
+
     		var top = $(this).offset().top - nav_height, 
     		    bottom = top + $(this).outerHeight(),
-    		    
     		    menuColor = $(this).attr('menuColor');
-
     		if (cur_pos >= top && cur_pos <= bottom) {
-				sections.removeClass('active');
-				$(this).addClass('active');
-				
+
+			
 				if (menuColor == "black"){
 					nav.removeClass('navbar-dark');
 					nav.addClass('navbar-light');
@@ -33,12 +30,11 @@ $(document).ready(function() {
 					nav.removeClass('navbar-light');
 					nav.addClass('navbar-dark');
 				}
-
 				nav.find('a').removeClass('active');
 				nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
-		
-				//nav.find('a').css("color", menuColor);
-				//nav.find('a[href="#'+$(this).attr('id')+'"]').css("color", "white");
+
+				//sections.removeClass('active');
+				//$(this).addClass('active');
     		}
   		});
 
