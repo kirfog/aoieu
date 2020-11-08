@@ -10,34 +10,39 @@ $(document).ready(function() {
         marginLeft: "+=9999px",
     }, 1000 );
 	
-	var sections = $('section')
-  	, nav = $('nav')
-  	, nav_height = 100;
- 	//nav.outerHeight()
+	var sections = $('section'), nav = $('nav')	, nav_height = 100;
  
 	$(window).on('scroll', function () {
   		var cur_pos = $(this).scrollTop();
 		sections.each(function() {
 	  
-    		var top = $(this).offset().top - nav_height,
+    		var top = $(this).offset().top - nav_height, 
     		    bottom = top + $(this).outerHeight(),
+    		    
     		    menuColor = $(this).attr('menuColor');
-		
-				menuColor = (typeof menuColor == typeof undefined) ? "white" : menuColor;
-				
+
     		if (cur_pos >= top && cur_pos <= bottom) {
 				sections.removeClass('active');
 				$(this).addClass('active');
 				
-				nav.find('a').parent().removeClass('active');
-				nav.find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active');
+				if (menuColor == "black"){
+					nav.removeClass('navbar-dark');
+					nav.addClass('navbar-light');
+				}
+				else {
+					nav.removeClass('navbar-light');
+					nav.addClass('navbar-dark');
+				}
+
+				nav.find('a').removeClass('active');
+				nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
 		
-				nav.find('a').css("color", menuColor);
-				nav.find('a[href="#'+$(this).attr('id')+'"]').css("color", "white");
+				//nav.find('a').css("color", menuColor);
+				//nav.find('a[href="#'+$(this).attr('id')+'"]').css("color", "white");
     		}
   		});
 
-  		if (cur_pos <= 300) {
+  		if (cur_pos <= 500) {
 			$('#backToTop').hide(200);
 		}else {
 			$('#backToTop').show(200);

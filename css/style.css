@@ -17,58 +17,18 @@ body::-webkit-scrollbar {
    background-color: transparent;
    background: transparent;
 }
-.navbar-inverse .navbar-nav>li>a {
-   color: white;
-   font-size: 1.2em;
- }
 
 /*full height*/
   .full {
   height: 100vh;
   }
 
-/*carousel*/
-.carousel .item  {
-    width: 100%;
-}
-.carousel .item img {
-    width: 100%;
-}
-.carousel-caption {
-    margin-left: -9999px;
-}
-#slide1 {
-    background: url("../img/theMilkyWay.jpg") no-repeat center center;
-    background-size: cover;
-}
-#slide2 {
-    background: url("../img/theSun.jpg") no-repeat center center;
-    background-size: cover;
-}
-#slide3 {
-    background: url("../img/theEarth.jpg") no-repeat center center;
-    background-size: cover;
-}
-#slide4 {
-    background: url("../img/theMilkyWay.jpg") no-repeat center center;
-    background-size: cover;
-}
-
 /*back to top*/
 #backToTop {
   display: none;
-}
-#back {
-    position: fixed;
-    bottom: 2em;
-    right: 2em;
-    background: black;
-    background: rgba(0,0,0,0.55);
-    padding: 1em;
-    color: white;
-}
-#back:hover {
-    background: green;
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
 }
 
 /*sections*/
@@ -114,6 +74,32 @@ body::-webkit-scrollbar {
     background-size: cover;
 }
 
+/*carousel*/
+.carousel .carousel-item  {
+    width: 100%;
+}
+.carousel .carousel-item img {
+    width: 100%;
+}
+.carousel-caption {
+    margin-left: -9999px;
+}
+#slide1 {
+    background: url("../img/theMilkyWay.jpg") no-repeat center center;
+    background-size: cover;
+}
+#slide2 {
+    background: url("../img/theSun.jpg") no-repeat center center;
+    background-size: cover;
+}
+#slide3 {
+    background: url("../img/theEarth.jpg") no-repeat center center;
+    background-size: cover;
+}
+#slide4 {
+    background: url("../img/theMilkyWay.jpg") no-repeat center center;
+    background-size: cover;
+}
 
 #anim {
   position: relative;
