@@ -87,12 +87,15 @@ for (let i = 0; i < x; i++) {
 }
 
 for (let i = 0; i < x; i++) {
-	$('#live').append('<div class="row " id="row' + i + '"></div>');
+	r = (i < 10) ? "0"+i : i;
+	$('#live').append('<div class="row " id="row' + r + '"></div>');
 	for (let j = 0; j < y; j++) {
+		a = (i < 10) ? "0"+i : i;
+		b = (j < 10) ? "0"+j : j;
 		if (cells[i][j] == 0){
-		$('#row'+i).append('<div class="btn btn-warning btn-sm" id="cell' + i + j +'"><i class="fas fa-skull-crossbones"></i></div>');
+		$('#row'+r).append('<div class="btn btn-warning btn-sm" id="cell' + a + b +'"><i class="fas fa-skull-crossbones"></i></div>');
 		} else {
-		$('#row'+i).append('<div class="btn btn-success btn-sm" id="cell' + i + j +'"><i class="fas fa-user"></div>');	
+		$('#row'+r).append('<div class="btn btn-success btn-sm" id="cell' + a + b +'"><i class="fas fa-user"></div>');
 		}
 }}
 
@@ -152,10 +155,12 @@ function neib(cellsarr,i,j){
 function drow(cellsarr){
 	for (let i = 0; i < x; i++) {
 		for (let j = 0; j < y; j++) {
+			a = (i < 10) ? "0"+i : i;
+			b = (j < 10) ? "0"+j : j;
 			if (cellsarr[i][j] == 0){
-				$('#cell'+i+j).replaceWith('<div class="btn btn-warning btn-sm" id="cell' + i + j +'"><i class="fas fa-skull-crossbones"></i></div>');
+				$('#cell'+a+b).replaceWith('<div class="btn btn-warning btn-sm" id="cell' + a + b +'"><i class="fas fa-skull-crossbones"></i></div>');
 			} else {
-				$('#cell'+i+j).replaceWith('<div class="btn btn-success btn-sm" id="cell' + i + j +'"><i class="fas fa-user"></div>');
+				$('#cell'+a+b).replaceWith('<div class="btn btn-success btn-sm" id="cell' + a + b +'"><i class="fas fa-user"></div>');
 			}
 	}}
 }
