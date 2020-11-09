@@ -64,8 +64,8 @@ function scrollToID(id, speed){
 	$('html,body').animate({scrollTop:targetOffset}, speed);
 }
 
-let x = 10;
-let y = 10;
+let x = 13;
+let y = 13;
 let n = 0;
 
 //let arr = Array(10).fill(0).map(() => Array(10).fill(0));
@@ -96,8 +96,7 @@ for (let i = 0; i < x; i++) {
 		}
 }}
 
-$('#live').append('<div class="btn btn-dark btn-lg" id="run"></div>');
-
+$('#live').append('<div class="btn btn-dark btn-lg" id="run">LIVE</div>');
 $('#run').on('click',function(){
 	let timerId = setInterval(() => run(), 2000);
 });
