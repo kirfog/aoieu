@@ -111,6 +111,7 @@ body::-webkit-scrollbar {
   -webkit-animation: anim 2s ease-in 0s infinite alternate;
 }
 
+/*
 @keyframes anim {
   from {
     text-shadow: 1em 1em 0.3em black;
@@ -137,3 +138,4 @@ body::-webkit-scrollbar {
     font-size: 3em;
   }
 }
+*/
