@@ -96,17 +96,17 @@ for (let i = 0; i < x; i++) {
 		b = (j < 10) ? "0"+j : j;
 		if (cells[i][j] == 0){
 		dead = dead + 1;
-		$('#row'+r).append('<div class="btn btn-warning" id="cell' + a + b +'"><i class="fas fa-skull-crossbones"></i></div>');
+		$('#row'+r).append('<div class="btn btn-outline-warning" id="cell' + a + b +'"><i class="fas fa-skull-crossbones"></i></div>');
 		} else {
 		alive = alive + 1;
-		$('#row'+r).append('<div class="btn btn-success" id="cell' + a + b +'"><i class="fas fa-user"></div>');
+		$('#row'+r).append('<div class="btn btn-outline-success" id="cell' + a + b +'"><i class="fas fa-user"></div>');
 		}
 		$('#cell'+a+b).click(function() {
  			clickon(i,j);
 		});
 
 }}
-$('#cont').append('<div class="row btn btn-dark btn-lg" id="run">START</div>');
+$('#cont').append('<div class="row btn btn-outline-dark btn-lg" id="run">START</div>');
 $('#cont').append('<div id="info"></div>');
 
 $('#run').on('click',function(){
@@ -117,7 +117,7 @@ function run(){
 	cellsP = cells;
 	cells = tern(cells);
 	drow(cells);
-	$('#info').replaceWith('<div class="row" id="info"><h2>Dead '+ dead +' Alive '+ alive + '</h2></div>');
+	$('#info').replaceWith('<div class="row" id="info"><p>Dead '+ dead +' Alive '+ alive + '</p></div>');
 }
 
 function tern(cells) {
@@ -193,7 +193,7 @@ function clickon(i,j){
 function died(i,j){
 	a = (i < 10) ? "0"+i : i;
 	b = (j < 10) ? "0"+j : j;
-	$('#cell'+a+b).replaceWith('<div class="btn btn-warning" id="cell' + a + b +'"><i class="fas fa-skull-crossbones"></i></div>');
+	$('#cell'+a+b).replaceWith('<div class="btn btn-outline-warning" id="cell' + a + b +'"><i class="fas fa-skull-crossbones"></i></div>');
 	$('#cell'+a+b).click(function() {
  		clickon(i,j);
 	});
@@ -201,7 +201,7 @@ function died(i,j){
 function born(i,j){
 	a = (i < 10) ? "0"+i : i;
 	b = (j < 10) ? "0"+j : j;
-	$('#cell'+a+b).replaceWith('<div class="btn btn-success" id="cell' + a + b +'"><i class="fas fa-user"></div>');
+	$('#cell'+a+b).replaceWith('<div class="btn btn-outline-success" id="cell' + a + b +'"><i class="fas fa-user"></div>');
 	$('#cell'+a+b).click(function() {
  		clickon(i,j);
 	});
