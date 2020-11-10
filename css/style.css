@@ -74,15 +74,16 @@ body::-webkit-scrollbar {
     background-size: cover;
 }
 
-#theWay, #start {
-    background-color: green;
+#theWay {
     padding: 5% 5%;
+}
 
+#theWay>div>div {
+  padding: 0 5%;
 }
 
 #theLive {
-    background-color: blue;
-    padding: 5% 5%;
+    background-color: lightgray;
 }
 
 
@@ -113,6 +114,8 @@ body::-webkit-scrollbar {
     background-size: cover;
 }
 
+/*
+
 #anim {
   position: relative;
   display: block;
@@ -123,7 +126,7 @@ body::-webkit-scrollbar {
   -webkit-animation: anim 2s ease-in 0s infinite alternate;
 }
 
-/*
+
 @keyframes anim {
   from {
     text-shadow: 1em 1em 0.3em black;
