@@ -58,7 +58,6 @@ $(document).ready(function() {
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-
 function scrollToID(id, speed){
 	let targetOffset = $(id).offset().top;
 	$('html,body').animate({scrollTop:targetOffset}, speed);
@@ -77,7 +76,6 @@ let cellsP = Array(x).fill(0).map(x => Array(y).fill(0));
 let cellsN = Array(x).fill(0).map(x => Array(y).fill(0));
 let cellsA = Array(x+2).fill(0).map(x => Array(y+2).fill(0));
 let cellsB = Array(x+2).fill(0).map(x => Array(y+2).fill(0));
-
 
 function randomInteger(min, max) {
   let rand = min + Math.random() * (max + 1 - min);
@@ -108,18 +106,18 @@ for (let i = 0; i < x; i++) {
 		});
 
 }}
-$('#cont').append('<div class="btn btn-dark btn-lg" id="run">START</div>');
+$('#cont').append('<div class="row btn btn-dark btn-lg" id="run">START</div>');
 $('#cont').append('<div id="info"></div>');
 
 $('#run').on('click',function(){
-	let t = setInterval(() => run(), 2000);
+	let t = setInterval(() => run(), 1000);
 });
 
 function run(){
 	cellsP = cells;
 	cells = tern(cells);
 	drow(cells);
-	$('#info').replaceWith('<div id="info"><h2>Dead '+ dead +' Alive '+ alive + '</h2></div>');
+	$('#info').replaceWith('<div class="row" id="info"><h2>Dead '+ dead +' Alive '+ alive + '</h2></div>');
 }
 
 function tern(cells) {
@@ -148,11 +146,6 @@ function tern(cells) {
 		for (let j = 0; j < y; j++) {
                 cellsN[i][j] = cellsB[i+1][j+1];
 	}}
-
-							console.log(JSON.stringify(cells));
-							console.log(JSON.stringify(cellsP));
-							console.log(JSON.stringify(cellsN));
-
 	return(cellsN);
 }
 
@@ -172,34 +165,44 @@ function neib(cellsarr,i,j){
 function drow(cellsarr){
 	for (let i = 0; i < x; i++) {
 		for (let j = 0; j < y; j++) {
-			a = (i < 10) ? "0"+i : i;
-			b = (j < 10) ? "0"+j : j;
 			if (cellsarr[i][j] == 0){
 				dead = dead + 1;
-				$('#cell'+a+b).replaceWith('<div class="btn btn-warning" id="cell' + a + b +'"><i class="fas fa-skull-crossbones"></i></div>');
+				died(i,j);
 			} else {
 				alive = alive + 1;
-				$('#cell'+a+b).replaceWith('<div class="btn btn-success" id="cell' + a + b +'"><i class="fas fa-user"></div>');
+				born(i,j);
 			}
-			$('#cell'+a+b).click(function() {
- 				clickon(i,j);
-			});
 	}}
 }
 
 function clickon(i,j){
 	console.log(i,j);
 	console.log(cells[i][j]);
-	a = (i < 10) ? "0"+i : i;
-	b = (j < 10) ? "0"+j : j;
 	if (cells[i][j] == 1){
 		dead = dead + 1;
 		cells[i][j] = 0;
-		$('#cell'+a+b).replaceWith('<div class="btn btn-success" id="cell' + a + b +'"><i class="fas fa-user"></div>');
+		died(i,j);
 	} else {
 		alive = alive + 1;
 		cells[i][j] = 1;
-		$('#cell'+a+b).replaceWith('<div class="btn btn-success" id="cell' + a + b +'"><i class="fas fa-user"></div>');
+		born(i,j);
 	}
 	drow(cells);
+}
+
+function died(i,j){
+	a = (i < 10) ? "0"+i : i;
+	b = (j < 10) ? "0"+j : j;
+	$('#cell'+a+b).replaceWith('<div class="btn btn-warning" id="cell' + a + b +'"><i class="fas fa-skull-crossbones"></i></div>');
+	$('#cell'+a+b).click(function() {
+ 		clickon(i,j);
+	});
+}
+function born(i,j){
+	a = (i < 10) ? "0"+i : i;
+	b = (j < 10) ? "0"+j : j;
+	$('#cell'+a+b).replaceWith('<div class="btn btn-success" id="cell' + a + b +'"><i class="fas fa-user"></div>');
+	$('#cell'+a+b).click(function() {
+ 		clickon(i,j);
+	});
 }
