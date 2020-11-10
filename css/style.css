@@ -74,6 +74,18 @@ body::-webkit-scrollbar {
     background-size: cover;
 }
 
+#theWay, #start {
+    background-color: green;
+    padding: 5% 5%;
+
+}
+
+#theLive {
+    background-color: blue;
+    padding: 5% 5%;
+}
+
+
 /*carousel*/
 .carousel .carousel-item  {
     width: 100%;
