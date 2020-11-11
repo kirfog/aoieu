@@ -57,7 +57,6 @@ $(document).ready(function() {
 	});
 });
 
-/////////////////////////////////////////////////////////////////////////////////////////////
 function scrollToID(id, speed){
 	let targetOffset = $(id).offset().top;
 	$('html,body').animate({scrollTop:targetOffset}, speed);
@@ -108,29 +107,50 @@ for (let i = 0; i < x; i++) {
 		});
 
 }}
-$('#cont').append('<div id="run" class="row btn btn-outline-dark"><div class="col">START</div></div><div class="row" id="info"></div>');
-drowinfo();
 
+$('#cont').append('<div id="run" class="btn btn-outline-dark">START</div>');
 $('#run').on('click',function(){
 	timeint = setInterval("run();", 1000);
 });
 
+$('#cont').append('<div id="clear" class="btn btn-outline-dark">CLEAR</div>');
+$('#clear').on('click',function(){
+	clearInterval(timeint);
+	clear();
+});
+
+$('#cont').append('<div class="row" id="info"></div>');
+
+drowinfo();
+
 function drowinfo(){
 	if (ca(cellsP, cellsN)) {
-		$('#info').replaceWith('<div class="row" id="info">GAME OVER on turn: '+ h + ' Dead: '+ dead +' Alive: '+ alive + '</div>');
+		$('#info').replaceWith('<div class="row" id="info"><h3>GAME OVER on turn: '+ h + ' Dead: '+ dead +' Alive: '+ alive + '</h3></div>');
 		clearInterval(timeint);
 	} else {
-		$('#info').replaceWith('<div class="row" id="info">Tern: '+ h + ' Dead: '+ dead +' Alive: '+ alive + '</span></div>');
+		$('#info').replaceWith('<div class="row" id="info">Turn: '+ h + ' Dead: '+ dead +' Alive: '+ alive + '</span></div>');
 	}
 }
 
-function run(){
-	tern();
+function clear(){
+	for (let i = 0; i < x; i++) {
+		for (let j = 0; j < y; j++) {
+			cells[i][j] = 0;
+	}}
+	h = 0;
+	dead = 0;
+	alive = 0;
 	drowcells();
 	drowinfo();
 }
 
-function tern() {
+function run(){
+	turn();
+	drowcells();
+	drowinfo();
+}
+
+function turn() {
 	h = h + 1;
 	dead = 0;
 	alive = 0;
@@ -198,8 +218,6 @@ function drowcells(){
 	}}
 }
 
-
-
 function clickon(i,j){
 	if (cells[i][j] == 1){
 		dead = dead + 1;
@@ -224,6 +242,7 @@ function died(i,j){
  		clickon(i,j);
 	});
 }
+
 function born(i,j){
 	a = (i < 10) ? "0"+i : i;
 	b = (j < 10) ? "0"+j : j;
