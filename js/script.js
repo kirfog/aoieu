@@ -125,10 +125,10 @@ drowinfo();
 
 function drowinfo(){
 	if (ca(cellsP, cellsN)) {
-		$('#info').replaceWith('<div class="row" id="info"><h3>GAME OVER on turn: '+ h + ' Dead: '+ dead +' Alive: '+ alive + '</h3></div>');
+		$('#info').replaceWith('<div class="row" id="info">GAME OVER on turn: '+ h + ' Dead: '+ dead +' Alive: '+ alive + '</div>');
 		clearInterval(timeint);
 	} else {
-		$('#info').replaceWith('<div class="row" id="info">Turn: '+ h + ' Dead: '+ dead +' Alive: '+ alive + '</span></div>');
+		$('#info').replaceWith('<div class="row" id="info">Turn: '+ h + ' Dead: '+ dead +' Alive: '+ alive + '</div>');
 	}
 }
 
