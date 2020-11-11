@@ -68,11 +68,13 @@ let y = 13;
 let n = 0;
 let dead = 0;
 let alive = 0;
+let h = 0;
+let timeint;
 
 //let arr = Array(10).fill(0).map(() => Array(10).fill(0));
 //let arr = Array.from(Array(10).fill(0), () => new Array(10).fill(0))
 let cells = Array(x).fill(0).map(x => Array(y).fill(0));
-let cellsP = Array(x).fill(0).map(x => Array(y).fill(0));
+let cellsP = Array(x).fill(1).map(x => Array(y).fill(1));
 let cellsN = Array(x).fill(0).map(x => Array(y).fill(0));
 let cellsA = Array(x+2).fill(0).map(x => Array(y+2).fill(0));
 let cellsB = Array(x+2).fill(0).map(x => Array(y+2).fill(0));
@@ -106,26 +108,38 @@ for (let i = 0; i < x; i++) {
 		});
 
 }}
-$('#cont').append('<div class="row btn btn-outline-dark btn-lg" id="run">START</div>');
-$('#cont').append('<div id="info"></div>');
+$('#cont').append('<div id="run" class="row btn btn-outline-dark"><div class="col">START</div></div><div class="row" id="info"></div>');
+drowinfo();
 
 $('#run').on('click',function(){
-	let t = setInterval(() => run(), 1000);
+	timeint = setInterval("run();", 1000);
 });
 
-function run(){
-	cellsP = cells;
-	cells = tern(cells);
-	drow(cells);
-	$('#info').replaceWith('<div class="row" id="info"><p>Dead '+ dead +' Alive '+ alive + '</p></div>');
+function drowinfo(){
+	if (ca(cellsP, cellsN)) {
+		$('#info').replaceWith('<div class="row" id="info">GAME OVER on turn: '+ h + ' Dead: '+ dead +' Alive: '+ alive + '</div>');
+		clearInterval(timeint);
+	} else {
+		$('#info').replaceWith('<div class="row" id="info">Tern: '+ h + ' Dead: '+ dead +' Alive: '+ alive + '</span></div>');
+	}
 }
 
-function tern(cells) {
+function run(){
+	tern();
+	drowcells();
+	drowinfo();
+}
+
+function tern() {
+	h = h + 1;
 	dead = 0;
 	alive = 0;
 	for (let i = 0; i < x; i++) {
 		for (let j = 0; j < y; j++) {
 			cellsA[i+1][j+1] = cells[i][j];
+			if (h % 2 != 0){
+				cellsP[i][j] = cells[i][j];
+			}
 		}	
 	}
 	for (let i = 1; i < x+1; i++) {
@@ -146,7 +160,8 @@ function tern(cells) {
 		for (let j = 0; j < y; j++) {
                 cellsN[i][j] = cellsB[i+1][j+1];
 	}}
-	return(cellsN);
+
+	cells = cellsN;
 }
 
 function neib(cellsarr,i,j){
@@ -162,10 +177,18 @@ function neib(cellsarr,i,j){
 	return n;
 }
 
-function drow(cellsarr){
+function ca(a, b) {
 	for (let i = 0; i < x; i++) {
 		for (let j = 0; j < y; j++) {
-			if (cellsarr[i][j] == 0){
+        	if (a[i][j] !== b[i][j]) return false;
+    }}
+    return true;
+}
+
+function drowcells(){
+	for (let i = 0; i < x; i++) {
+		for (let j = 0; j < y; j++) {
+			if (cells[i][j] == 0){
 				dead = dead + 1;
 				died(i,j);
 			} else {
@@ -175,9 +198,9 @@ function drow(cellsarr){
 	}}
 }
 
+
+
 function clickon(i,j){
-	console.log(i,j);
-	console.log(cells[i][j]);
 	if (cells[i][j] == 1){
 		dead = dead + 1;
 		cells[i][j] = 0;
@@ -187,7 +210,10 @@ function clickon(i,j){
 		cells[i][j] = 1;
 		born(i,j);
 	}
-	drow(cells);
+	dead = 0;
+	alive = 0;
+	drowcells();
+	drowinfo();
 }
 
 function died(i,j){
