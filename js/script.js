@@ -78,16 +78,7 @@ let cellsN = Array(x).fill(0).map(x => Array(y).fill(0));
 let cellsA = Array(x+2).fill(0).map(x => Array(y+2).fill(0));
 let cellsB = Array(x+2).fill(0).map(x => Array(y+2).fill(0));
 
-function randomInteger(min, max) {
-  let rand = min + Math.random() * (max + 1 - min);
-  return Math.floor(rand);
-}
-
-for (let i = 0; i < x; i++) {
-	for (let j = 0; j < y; j++) {
-		cells[i][j] = randomInteger(0, 1);
-	}
-}
+rnd();
 
 for (let i = 0; i < x; i++) {
 	r = (i < 10) ? "0"+i : i;
@@ -105,12 +96,12 @@ for (let i = 0; i < x; i++) {
 		$('#cell'+a+b).click(function() {
  			clickon(i,j);
 		});
-
 }}
+
 
 $('#cont').append('<div id="run" class="btn btn-outline-dark">START</div>');
 $('#run').on('click',function(){
-	timeint = setInterval("run();", 1000);
+	timeint = setInterval("run();", 500);
 });
 
 $('#cont').append('<div id="clear" class="btn btn-outline-dark">CLEAR</div>');
@@ -119,9 +110,32 @@ $('#clear').on('click',function(){
 	clear();
 });
 
+$('#cont').append('<div id="rnd" class="btn btn-outline-dark">RANDOM</div>');
+$('#rnd').on('click',function(){
+	clearInterval(timeint);
+	rnd();
+});
+
 $('#cont').append('<div class="row" id="info"></div>');
 
 drowinfo();
+
+function rnd(){
+for (let i = 0; i < x; i++) {
+	for (let j = 0; j < y; j++) {
+		cells[i][j] = randomInteger(0, 1);
+	}}
+	h = 0;
+	dead = 0;
+	alive = 0;
+	drowcells();
+	drowinfo();
+}
+
+function randomInteger(min, max) {
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
+}
 
 function drowinfo(){
 	if (ca(cellsP, cellsN)) {
