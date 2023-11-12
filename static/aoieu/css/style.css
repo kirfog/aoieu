@@ -1,0 +1,56 @@
+body {
+overflow-x: hidden;
+-ms-overflow-style: none;
+}
+body::-webkit-scrollbar { 
+    display: none; 
+}
+*:focus {
+    outline: 0;
+}
+
+/*navbar*/
+.navbar {
+   background-color: transparent;
+   background: transparent;
+}
+.dropdown-menu {
+  background-color: black;
+  background: black;
+  
+}
+.dropdown-item {
+  color: white;
+}
+
+/*sections*/
+.sect {
+  height: 100vh;
+  background-color: black;
+  background-size: cover;
+}
+  
+.sectiondiv {
+      position: relative;
+      top: 10%;
+      left: 5%;
+      text-align: left;
+      color: white;
+      font-size: 2em;
+}
+.sectiondivform {
+  position: relative;
+  top: 10%;
+  left: 5%;
+  text-align: left;
+  color: white;
+  font-size: 1em;
+}
+.sectionfooter {
+  position: relative;
+  top: 10%;
+  left: 5%;
+  text-align: left;
+  color: white;
+  font-size: 1em;
+}

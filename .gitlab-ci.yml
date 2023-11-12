@@ -1,0 +1,51 @@
+stages:
+  - test
+  - build
+
+variables:
+  DEBUG: 1
+  DJANGO_ALLOWED_HOSTS: 'localhost 127.0.0.1 [::1] 192.168.88.138'
+  CSRF_TRUSTED_ORIGINS: 'https://*.127.0.0.1 https://*.192.168.88.138'
+  SECRET_KEY: $SECRET_KEY
+  DJANGO_SUPERUSER_USERNAME: $DJANGO_SUPERUSER_USERNAME
+  DJANGO_SUPERUSER_PASSWORD: $DJANGO_SUPERUSER_PASSWORD
+  DJANGO_SUPERUSER_EMAIL: $DJANGO_SUPERUSER_EMAIL
+  POSTGRES_USER: $POSTGRES_USER
+  POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+  POSTGRES_DB: $POSTGRES_DB
+  POSTGRES_HOST: $POSTGRES_HOST
+  POSTGRES_PORT: $POSTGRES_PORT
+  POSTGRES_HOST_AUTH_METHOD: trust
+  SECURE_FILES_DOWNLOAD_PATH: './haproxy'
+
+run_tests:
+  stage: test
+  tags:
+    - docker
+  image: python:3.12-slim-bookworm
+  services:
+    - postgres:latest
+  before_script:
+    - apt update && apt -y install make libpq-dev gcc
+  script:
+    - make test
+    
+# build_image:
+#   stage: build
+#   image: docker:latest
+#   services:
+#     - docker:dind
+#   variables:
+#     DOCKER_TLS_CERTDIR: "/certs"
+#   script:
+#     - docker build -t 192.168.88.134:5000/aoieu .
+#     - docker push 192.168.88.134:5000/aoieu
+
+build_image:
+  stage: build
+  tags:
+    - shell
+  script:
+    - curl --silent "https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/download-secure-files/-/raw/main/installer" | bash
+    - docker compose -f docker-compose.gitlab.yml build
+    - docker compose -f docker-compose.gitlab.yml up -d

@@ -1,0 +1,86 @@
+{% extends 'base.html'%}
+
+{% block style %}
+<style>
+
+  {% for planet in planets %}
+    #{{planet.name}}{
+        background: url("{{planet.image.url}}") no-repeat center center;
+        background-size: cover;
+    }
+  {% endfor %}
+  
+</style>
+{% endblock %}
+
+{% block body %}
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="{% url 'galaxies' %}">Galaxies</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'stars' %}">Stars</a></li>
+      <li class="nav-item"><a class="nav-link active" href="{% url 'planets' %}">Planets</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'moons' %}">Moons</a></li>
+
+      <li class="nav-item"><a class="nav-link" href="">|</a></li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Star
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          {% for star in stars %}
+          <li><a class="dropdown-item" href="{% url 'planets'  %}?star={{star.name}}">{{star.name}}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      <form method="GET" action="{% url 'planets' %}">
+        <input type="text" name="planet" placeholder="{{planets_count}} Planets"  class="form-control"/>
+      </form>
+      {% for planet in planets %}
+        <li class="nav-item"><a class="nav-link {% if planet.name == planets.0.name %} active {% endif %}" href="#{{planet.name}}">{{planet.name}}</a></li>
+      {% endfor %}
+    </ul>
+
+  </div>
+</nav>
+
+{% if planets %}
+
+{% for planet in planets %}
+  <section id="{{ planet.name }}" class="sect">
+    <div class="sectiondiv">
+      {{ planet.name }}
+      <a type="button" class="btn bg-transparent btn-outline-primary" href="{% url 'updateplanet' planet.name %}">Edit</a>
+      <a type="button" class="btn bg-transparent btn-outline-primary" href="{% url 'deleteplanet' planet.name %}">Delete</a>
+      <a type="button" class="btn bg-transparent btn-outline-primary" href="{% url 'createplanet' %}">Add</a>
+    </div>
+    <div class="sectiondiv">
+      Mass: {{ planet.mass }}
+    </div>
+    <div class="sectiondiv">
+      Diameter: {{ planet.diameter }}
+    </div>
+  </section>
+{% endfor %}
+
+
+{% else %}
+<section id="noplanets" class="sect">
+  <div class="sectiondiv">
+    No planets here
+    <a type="button" class="btn bg-transparent btn-outline-primary" href="{% url 'createplanet' %}">Add</a>
+  </div>
+</section>
+{% endif %}
+
+
+{% endblock %}
+

@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+{% block body %}
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="{% url 'galaxies' %}">Galaxies</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'stars' %}">Stars</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'planets' %}">Planets</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'moons' %}">Moons</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+
+<section id="the{{obj.name}}" class="sect">
+
+  <div class="sectiondivform row">
+    <div class="col-2">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="col-10">
+        <button type="submit" class="form-control save btn btn-warning">Save</button>
+      </div>
+      </form>
+    </div>
+  </div>
+
+
+</section>
+
+{% endblock %}
+
+
+
+
+
+

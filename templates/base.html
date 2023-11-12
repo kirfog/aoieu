@@ -1,0 +1,30 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="">
+        <head>
+            <meta charset="utf-8">
+            <title></title>
+            <meta name="description" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <link rel="stylesheet" href="{% static 'aoieu/css/normalize.css' %}">
+            <link rel="stylesheet" href="{% static 'aoieu/css/bootstrap.min.css' %}">
+            <link rel="stylesheet" href="{% static 'aoieu/css/style.css' %}">
+            <script src="{% static 'aoieu/js/vendor/modernizr.js' %}"></script>
+
+            {% block style %}
+            {% endblock %}
+
+        </head>
+    <body>
+    
+        {% block body %}
+        {% endblock %}
+
+        <script src="{% static 'aoieu/js/vendor/jquery.min.js' %}"></script>
+        <script src="{% static 'aoieu/js/vendor/jquery.scrollify.js' %}"></script>
+        <script src="{% static 'aoieu/js/vendor/popper.min.js' %}"></script>
+        <script src="{% static 'aoieu/js/vendor/bootstrap.min.js' %}"></script>
+        <script src="{% static 'aoieu/js/script.js' %}"></script>  
+    </body>
+</html>

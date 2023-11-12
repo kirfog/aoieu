@@ -1,0 +1,89 @@
+{% extends 'base.html'%}
+
+{% block style %}
+<style>
+
+  {% for star in stars %}
+    #{{star.name}}{
+        background: url("{{star.image.url}}") no-repeat center center;
+        background-size: cover;
+    }
+  {% endfor %}
+  
+</style>
+{% endblock %}
+
+{% block body %}
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="{% url 'galaxies' %}">Galaxies</a></li>
+      <li class="nav-item"><a class="nav-link active" href="{% url 'stars' %}">Stars</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'planets' %}">Planets</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'moons' %}">Moons</a></li>
+
+      <li class="nav-item"><a class="nav-link" href="">|</a></li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Galaxy
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          {% for galaxy in galaxies %}
+          <li><a class="dropdown-item" href="{% url 'stars'  %}?galaxy={{galaxy.name}}">{{galaxy.name}}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+
+      {% for star in stars %}
+        <li class="nav-item"><a class="nav-link {% if star.name == stars.0.name %} active {% endif %}" href="#{{star.name}}">{{star.name}}</a></li>
+      {% endfor %}
+    </ul>
+
+  </div>
+</nav>
+
+{% if stars %}
+
+{% for star in stars %}
+  <section id="{{ star.name }}" class="sect">
+
+      <div class="sectiondiv">
+        {{ star.name }}
+        <a type="button" class="btn bg-transparent btn-outline-primary" href="{% url 'updatestar' star.name %}">Edit</a>
+        <a type="button" class="btn bg-transparent btn-outline-primary" href="{% url 'deletestar' star.name %}">Delete</a>
+        <a type="button" class="btn bg-transparent btn-outline-primary" href="{% url 'createstar' %}">Add</a>
+      </div>
+
+      
+      <div class="sectionfooter">
+      {% for planet in star.planet_set.all  %}
+        <div class="">
+          {{ planet.name }}
+        </div>
+      {% endfor %}
+     </div>
+
+
+  </section>
+{% endfor %}
+
+{% else %}
+<section id="nostars" class="sect">
+  <div class="sectiondiv">
+    No stars here
+    <a type="button" class="btn bg-transparent btn-outline-primary" href="{% url 'createstar' %}">Add</a>
+  </div>
+</section>
+{% endif %}
+
+
+{% endblock %}
+

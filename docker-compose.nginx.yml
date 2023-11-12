@@ -1,0 +1,51 @@
+services:
+  web:
+    build: .
+    image: aoieu
+    env_file:
+      - ./.env_aoieu
+    command: gunicorn kadmin.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app/
+      - static_volume:/app/staticfiles
+      - media_volume:/app/mediafiles
+    expose:
+      - 8000
+    depends_on:
+      - migration
+      - db
+  
+  migration:
+    image: aoieu
+    env_file:
+      - ./.env_aoieu
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser --noinput && python manage.py collectstatic --noinput"
+    volumes:
+      - .:/app/
+      - static_volume:/app/staticfiles
+      - media_volume:/app/mediafiles
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    env_file:
+      - ./.env_aoieu
+    container_name: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/app/staticfiles
+      - media_volume:/app/mediafiles
+    ports:
+      - 80:80
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
