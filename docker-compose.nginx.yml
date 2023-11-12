@@ -1,12 +1,12 @@
 services:
   web:
-    build: .
+    build: ./django
     image: aoieu
     env_file:
       - ./.env_aoieu
     command: gunicorn kadmin.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - .:/app/
+      - ./django:/app/
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
     expose:
@@ -21,7 +21,7 @@ services:
       - ./.env_aoieu
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser --noinput && python manage.py collectstatic --noinput"
     volumes:
-      - .:/app/
+      - ./django:/app/
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
     depends_on:

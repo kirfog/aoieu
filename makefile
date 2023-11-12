@@ -1,6 +1,6 @@
 test:
-	pip install -r ./requirements.txt
-	python ./manage.py test
+	pip install -r ./django/requirements.txt
+	python ./django/manage.py test django
 run:
-	pip install -r ./requirements.txt
-	python ./manage.py runserver
+	pip install -r ./django/requirements.txt
+	python ./django/manage.py runserver

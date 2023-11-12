@@ -1,12 +1,12 @@
 services:
   web:
-    build: .
+    build: ./django
     image: aoieu
     env_file:
       - ./.env_aoieu
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/app/
+      - ./django:/app/
     ports:
       - 8000:8000
     depends_on:
@@ -17,9 +17,9 @@ services:
     image: aoieu
     env_file:
       - ./.env_aoieu
-    command: bash -c "python manage.py flush --noinput && python manage.py migrate && python manage.py createsuperuser --noinput"
+    command: bash -c "python manage.py flush --noinput && python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser --noinput"
     volumes:
-      - .:/app/
+      - ./django:/app/
     depends_on:
       - db
 

@@ -1,6 +1,6 @@
 services:
   web1:
-    build: .
+    build: ./django
     image: aoieu
     environment:
       - SECRET_KEY
@@ -17,7 +17,7 @@ services:
       - CSRF_TRUSTED_ORIGINS
     command: gunicorn kadmin.wsgi:application --bind 0.0.0.0:8001
     volumes:
-      - .:/app/
+      - ./django:/app/
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
     expose:
@@ -26,7 +26,7 @@ services:
       - migration
       - db
   web2:
-    build: .
+    build: ./django
     image: aoieu
     environment:
       - SECRET_KEY
@@ -43,7 +43,7 @@ services:
       - CSRF_TRUSTED_ORIGINS
     command: gunicorn kadmin.wsgi:application --bind 0.0.0.0:8002
     volumes:
-      - .:/app/
+      - ./django:/app/
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
     expose:
@@ -69,7 +69,7 @@ services:
       - CSRF_TRUSTED_ORIGINS
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser --noinput && python manage.py collectstatic --noinput"
     volumes:
-      - .:/app/
+      - ./django:/app/
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
     depends_on:
